@@ -17,11 +17,13 @@ model Order {
   hour     String
   status   String
   service  String
+
+  specialBudgets SpecialBudget[]
+  mobilityService MobilityService[] 
 }
 
 model SpecialBudget {
   id               Int     @id @default(autoincrement())
-  plate            String
   status           String
   cost             Float
   wheelDolliesQtd  Int
@@ -35,15 +37,22 @@ model SpecialBudget {
   workerBase       String
   reason           String
   explanation      String
+
+  orderProtocol String
+  fk_order_protocol Order @relation(references: [protocol], fields: [orderProtocol])
 }
 
-model AlternativeTransport {
-  status        String
+model MobilityService {
+  id            Int @id @default(autoincrement())
   destiny       String
+  status        String
   cost          Float
   type          String
   plate         String
   totalDistance Int
   passengersQtd Int
   vehicleModel  String
+
+  orderProtocol String
+  fk_order_protocol Order @relation(references: [protocol], fields: [orderProtocol])
 }
