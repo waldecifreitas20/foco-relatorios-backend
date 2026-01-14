@@ -1,0 +1,49 @@
+// This is your Prisma schema file,
+// learn more about it in the docspris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model Order {
+  protocol String @id
+  plate    String
+  date     String
+  hour     String
+  status   String
+  service  String
+}
+
+model SpecialBudget {
+  id               Int     @id @default(autoincrement())
+  plate            String
+  status           String
+  cost             Float
+  wheelDolliesQtd  Int
+  additionalWheels Int
+  daysParked       Int
+  isUprighted      Boolean
+  isGroundWithdraw Boolean
+  isOffRoad        Boolean
+  origin           String
+  destiny          String
+  workerBase       String
+  reason           String
+  explanation      String
+}
+
+model AlternativeTransport {
+  status        String
+  destiny       String
+  cost          Float
+  type          String
+  plate         String
+  totalDistance Int
+  passengersQtd Int
+  vehicleModel  String
+}
