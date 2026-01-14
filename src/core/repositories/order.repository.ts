@@ -10,7 +10,14 @@ export class OrderRepository {
     });
   }
 
-  async getAll() { }
+  async getAll() {
+    return this.table.findMany({
+      include: {
+        mobilityService: true,
+        specialBudgets: true,
+      }
+    });
+  }
 
   async update() { }
 

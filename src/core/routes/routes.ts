@@ -8,7 +8,7 @@ const orderService = new OrderService();
 
 /* ORDERS ROUTES */
 appRouter.post("/orders/create", async (req, res) => {
-  const { body } = req; 
+  const { body } = req;
   const response = await orderService.create(body as CreateOrderDto);
 
   return res.status(response.status).json(response);
@@ -23,7 +23,8 @@ appRouter.patch("/orders/update/:protocol", async (req, res) => {
 });
 
 appRouter.get("/orders/all", async (req, res) => {
-  return res.status(200).json({ msg: "route not implemented yet" });
+  const response = await orderService.getAll();
+  return res.status(response.status).json(response);
 });
 
 

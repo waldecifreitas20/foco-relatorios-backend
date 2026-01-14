@@ -24,4 +24,23 @@ export class OrderService {
     }
 
   }
+
+
+  async getAll() {
+    try {
+      const orders = await this.repo.getAll();
+
+      return {
+        status: 200,
+        orders,
+      }
+    } catch (error) {
+      console.log(error);
+
+      return {
+        status: 502,
+        response: "An error occurred at server",
+      }
+    }
+  }
 }
