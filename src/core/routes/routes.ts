@@ -8,10 +8,10 @@ const orderService = new OrderService();
 
 /* ORDERS ROUTES */
 appRouter.post("/orders/create", async (req, res) => {
-  const { body } = req;
-  const { response, status } = await orderService.create(body as CreateOrderDto);
+  const { body } = req; 
+  const response = await orderService.create(body as CreateOrderDto);
 
-  return res.status(status).json(response);
+  return res.status(response.status).json(response);
 });
 
 appRouter.delete("/orders/delete/:protocol", async (req, res) => {
