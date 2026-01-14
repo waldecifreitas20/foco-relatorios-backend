@@ -1,6 +1,6 @@
 import { Service } from "../types/Service";
 
-interface CreateOrderDto {
+export interface CreateOrderDto {
   protocol: string;
   plate: string;
   date: string;

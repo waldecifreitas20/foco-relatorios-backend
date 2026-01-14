@@ -1,10 +1,15 @@
 import express from "express";
+import { appRouter } from "./core/routes/routes";
 
 const app = express();
 
 app.get("/", (req, res) => {
-  return res.status(200).json({msg: 'ok'});
+  return res.status(200).json({ msg: 'ok' });
 });
+
+
+app.use("/", appRouter);
+
 
 
 app.listen(3000, () => {
