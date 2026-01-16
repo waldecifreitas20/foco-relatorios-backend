@@ -1,5 +1,5 @@
 import { AppDatabase } from "../../database/connection";
-import { CreateOrderDto } from "../../dto/order.dto";
+import { CreateOrderDto, UpdateOrderDto } from "../../dto/order.dto";
 
 export class OrderRepository {
   table = AppDatabase.order;
@@ -19,7 +19,21 @@ export class OrderRepository {
     });
   }
 
-  async update() { }
+  async update(patch: UpdateOrderDto) {
+    return this.table.update({
+      where: {
+        protocol: patch.protocol
+      },
+      data: {
+        plate: patch.plate,
+        date: patch.date,
+        hour: patch.hour,
+        service: patch.service,
+        status: patch.status,
+      }
+    })
+
+  }
 
   async delete() { }
 }

@@ -1,4 +1,4 @@
-import { CreateOrderDto } from "../../dto/order.dto";
+import { CreateOrderDto, UpdateOrderDto } from "../../dto/order.dto";
 import { OrderRepository } from "../repositories/order.repository";
 
 export class OrderService {
@@ -43,4 +43,23 @@ export class OrderService {
       }
     }
   }
+
+
+  async update(patch: UpdateOrderDto) {
+    try {
+      await this.repo.update(patch);
+
+      return {
+        status: 204,
+      }
+    } catch (error) {
+      console.error(error);
+
+      return {
+        status: 502,
+        error: "Update has failed.",
+      }
+    }
+  }
+
 }
