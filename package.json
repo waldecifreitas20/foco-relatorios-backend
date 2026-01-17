@@ -3,15 +3,17 @@
   "version": "1.0.0",
   "type": "module",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "dev": "tsx --watch src/index.ts",
-    "build": "npx tsc build src/index.ts --out-dir dist --clean",
-    "start": "node src/index.js"
+    "build": "npx tsc --outDir dist/",
+    "prisma": "prisma migrate dev && prisma generate",
+    "start": "node dist/src/index.js"
   },
   "author": "Waldeci Freitas",
   "license": "ISC",
   "dependencies": {
+    "@flydotio/litestream": "^1.0.1",
     "@prisma/adapter-better-sqlite3": "^7.2.0",
     "@prisma/client": "^7.2.0",
     "@types/cors": "^2.8.19",
@@ -20,11 +22,15 @@
     "express": "^5.2.1"
   },
   "devDependencies": {
+    "@flydotio/dockerfile": "^0.7.10",
     "@types/better-sqlite3": "^7.6.13",
     "@types/express": "^5.0.6",
     "@types/node": "^25.0.8",
     "prisma": "^7.2.0",
     "tsx": "^4.21.0",
     "typescript": "^5.9.3"
+  },
+  "dockerfile": {
+    "litestream": true
   }
 }
