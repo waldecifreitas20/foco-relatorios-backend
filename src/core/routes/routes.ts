@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { OrderService } from "../services/order.service";
+import { OrderService } from "../services/order.service.js";
 import { CreateOrderDto, UpdateOrderDto } from "../../dto/order.dto";
 
 

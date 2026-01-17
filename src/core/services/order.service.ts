@@ -1,5 +1,5 @@
 import { CreateOrderDto, UpdateOrderDto } from "../../dto/order.dto";
-import { OrderRepository } from "../repositories/order.repository";
+import { OrderRepository } from "../repositories/order.repository.js";
 
 export class OrderService {
   repo = new OrderRepository();

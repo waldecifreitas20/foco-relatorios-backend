@@ -1,4 +1,4 @@
-import { AppDatabase } from "../../database/connection";
+import { AppDatabase } from "../../database/connection.js";
 import { CreateOrderDto, UpdateOrderDto } from "../../dto/order.dto";
 
 export class OrderRepository {
