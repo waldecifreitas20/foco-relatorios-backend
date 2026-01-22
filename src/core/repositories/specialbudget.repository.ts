@@ -1,5 +1,5 @@
 import { AppDatabase } from "../../database/connection";
-import { CreateMinimalSpecialBudgetDto } from "../../dto/specialbudget.dto";
+import { CreateMinimalSpecialBudgetDto, CreateSpecialBudgetDto } from "../../dto/specialbudget.dto";
 
 export class SpecialBudgetRepository {
   table = AppDatabase.specialBudget;
@@ -15,7 +15,16 @@ export class SpecialBudgetRepository {
     });
   }
 
-  async create() {}
+  async create(data: CreateSpecialBudgetDto) {
+    return await this.table.create({
+      data: {
+        cost: data.cost,
+        status: data.status,
+        orderProtocol: data.protocol,
+        reason: data.reason,
+      }
+    });
+  }
 
   async getAll() {}
 

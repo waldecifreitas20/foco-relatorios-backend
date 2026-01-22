@@ -5,6 +5,16 @@ const PRISMA_ERRORS = {
 
 type ErrorCode = "P2002";
 
-export function getErrorMessage(prismaErrorCode: ErrorCode) {
+export function getDatabaseErrorMessage(prismaErrorCode: ErrorCode) {
   return PRISMA_ERRORS[prismaErrorCode];
+}
+
+
+export function getErrorResponse(error: any) {
+  const { status, message } = getDatabaseErrorMessage(error.code);
+
+  return {
+    status: message ? status : 500,
+    response: message ?? "An error occurred at server",
+  }
 }
