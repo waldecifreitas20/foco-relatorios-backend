@@ -1,4 +1,5 @@
 import { Service } from "../types/Service";
+import { SpecialBudgetStatus } from "../types/SpecialBudget";
 
 export interface CreateOrderDto {
   protocol: string;
@@ -7,6 +8,10 @@ export interface CreateOrderDto {
   hour: string;
   status: string;
   service: Service;
+  specialBudget? : {
+    cost: number;
+    status: SpecialBudgetStatus;
+  } 
 }
 
 export interface UpdateOrderDto {
