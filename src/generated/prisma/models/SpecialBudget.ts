@@ -259,17 +259,17 @@ export type SpecialBudgetGroupByOutputType = {
   id: number
   status: string
   cost: number
-  wheelDolliesQtd: number
-  additionalWheels: number
-  daysParked: number
-  isUprighted: boolean
-  isGroundWithdraw: boolean
-  isOffRoad: boolean
-  origin: string
-  destiny: string
-  workerBase: string
-  reason: string
-  explanation: string
+  wheelDolliesQtd: number | null
+  additionalWheels: number | null
+  daysParked: number | null
+  isUprighted: boolean | null
+  isGroundWithdraw: boolean | null
+  isOffRoad: boolean | null
+  origin: string | null
+  destiny: string | null
+  workerBase: string | null
+  reason: string | null
+  explanation: string | null
   orderProtocol: string
   _count: SpecialBudgetCountAggregateOutputType | null
   _avg: SpecialBudgetAvgAggregateOutputType | null
@@ -300,17 +300,17 @@ export type SpecialBudgetWhereInput = {
   id?: Prisma.IntFilter<"SpecialBudget"> | number
   status?: Prisma.StringFilter<"SpecialBudget"> | string
   cost?: Prisma.FloatFilter<"SpecialBudget"> | number
-  wheelDolliesQtd?: Prisma.IntFilter<"SpecialBudget"> | number
-  additionalWheels?: Prisma.IntFilter<"SpecialBudget"> | number
-  daysParked?: Prisma.IntFilter<"SpecialBudget"> | number
-  isUprighted?: Prisma.BoolFilter<"SpecialBudget"> | boolean
-  isGroundWithdraw?: Prisma.BoolFilter<"SpecialBudget"> | boolean
-  isOffRoad?: Prisma.BoolFilter<"SpecialBudget"> | boolean
-  origin?: Prisma.StringFilter<"SpecialBudget"> | string
-  destiny?: Prisma.StringFilter<"SpecialBudget"> | string
-  workerBase?: Prisma.StringFilter<"SpecialBudget"> | string
-  reason?: Prisma.StringFilter<"SpecialBudget"> | string
-  explanation?: Prisma.StringFilter<"SpecialBudget"> | string
+  wheelDolliesQtd?: Prisma.IntNullableFilter<"SpecialBudget"> | number | null
+  additionalWheels?: Prisma.IntNullableFilter<"SpecialBudget"> | number | null
+  daysParked?: Prisma.IntNullableFilter<"SpecialBudget"> | number | null
+  isUprighted?: Prisma.BoolNullableFilter<"SpecialBudget"> | boolean | null
+  isGroundWithdraw?: Prisma.BoolNullableFilter<"SpecialBudget"> | boolean | null
+  isOffRoad?: Prisma.BoolNullableFilter<"SpecialBudget"> | boolean | null
+  origin?: Prisma.StringNullableFilter<"SpecialBudget"> | string | null
+  destiny?: Prisma.StringNullableFilter<"SpecialBudget"> | string | null
+  workerBase?: Prisma.StringNullableFilter<"SpecialBudget"> | string | null
+  reason?: Prisma.StringNullableFilter<"SpecialBudget"> | string | null
+  explanation?: Prisma.StringNullableFilter<"SpecialBudget"> | string | null
   orderProtocol?: Prisma.StringFilter<"SpecialBudget"> | string
   fk_order_protocol?: Prisma.XOR<Prisma.OrderScalarRelationFilter, Prisma.OrderWhereInput>
 }
@@ -319,17 +319,17 @@ export type SpecialBudgetOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   status?: Prisma.SortOrder
   cost?: Prisma.SortOrder
-  wheelDolliesQtd?: Prisma.SortOrder
-  additionalWheels?: Prisma.SortOrder
-  daysParked?: Prisma.SortOrder
-  isUprighted?: Prisma.SortOrder
-  isGroundWithdraw?: Prisma.SortOrder
-  isOffRoad?: Prisma.SortOrder
-  origin?: Prisma.SortOrder
-  destiny?: Prisma.SortOrder
-  workerBase?: Prisma.SortOrder
-  reason?: Prisma.SortOrder
-  explanation?: Prisma.SortOrder
+  wheelDolliesQtd?: Prisma.SortOrderInput | Prisma.SortOrder
+  additionalWheels?: Prisma.SortOrderInput | Prisma.SortOrder
+  daysParked?: Prisma.SortOrderInput | Prisma.SortOrder
+  isUprighted?: Prisma.SortOrderInput | Prisma.SortOrder
+  isGroundWithdraw?: Prisma.SortOrderInput | Prisma.SortOrder
+  isOffRoad?: Prisma.SortOrderInput | Prisma.SortOrder
+  origin?: Prisma.SortOrderInput | Prisma.SortOrder
+  destiny?: Prisma.SortOrderInput | Prisma.SortOrder
+  workerBase?: Prisma.SortOrderInput | Prisma.SortOrder
+  reason?: Prisma.SortOrderInput | Prisma.SortOrder
+  explanation?: Prisma.SortOrderInput | Prisma.SortOrder
   orderProtocol?: Prisma.SortOrder
   fk_order_protocol?: Prisma.OrderOrderByWithRelationInput
 }
@@ -341,17 +341,17 @@ export type SpecialBudgetWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.SpecialBudgetWhereInput | Prisma.SpecialBudgetWhereInput[]
   status?: Prisma.StringFilter<"SpecialBudget"> | string
   cost?: Prisma.FloatFilter<"SpecialBudget"> | number
-  wheelDolliesQtd?: Prisma.IntFilter<"SpecialBudget"> | number
-  additionalWheels?: Prisma.IntFilter<"SpecialBudget"> | number
-  daysParked?: Prisma.IntFilter<"SpecialBudget"> | number
-  isUprighted?: Prisma.BoolFilter<"SpecialBudget"> | boolean
-  isGroundWithdraw?: Prisma.BoolFilter<"SpecialBudget"> | boolean
-  isOffRoad?: Prisma.BoolFilter<"SpecialBudget"> | boolean
-  origin?: Prisma.StringFilter<"SpecialBudget"> | string
-  destiny?: Prisma.StringFilter<"SpecialBudget"> | string
-  workerBase?: Prisma.StringFilter<"SpecialBudget"> | string
-  reason?: Prisma.StringFilter<"SpecialBudget"> | string
-  explanation?: Prisma.StringFilter<"SpecialBudget"> | string
+  wheelDolliesQtd?: Prisma.IntNullableFilter<"SpecialBudget"> | number | null
+  additionalWheels?: Prisma.IntNullableFilter<"SpecialBudget"> | number | null
+  daysParked?: Prisma.IntNullableFilter<"SpecialBudget"> | number | null
+  isUprighted?: Prisma.BoolNullableFilter<"SpecialBudget"> | boolean | null
+  isGroundWithdraw?: Prisma.BoolNullableFilter<"SpecialBudget"> | boolean | null
+  isOffRoad?: Prisma.BoolNullableFilter<"SpecialBudget"> | boolean | null
+  origin?: Prisma.StringNullableFilter<"SpecialBudget"> | string | null
+  destiny?: Prisma.StringNullableFilter<"SpecialBudget"> | string | null
+  workerBase?: Prisma.StringNullableFilter<"SpecialBudget"> | string | null
+  reason?: Prisma.StringNullableFilter<"SpecialBudget"> | string | null
+  explanation?: Prisma.StringNullableFilter<"SpecialBudget"> | string | null
   orderProtocol?: Prisma.StringFilter<"SpecialBudget"> | string
   fk_order_protocol?: Prisma.XOR<Prisma.OrderScalarRelationFilter, Prisma.OrderWhereInput>
 }, "id">
@@ -360,17 +360,17 @@ export type SpecialBudgetOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   status?: Prisma.SortOrder
   cost?: Prisma.SortOrder
-  wheelDolliesQtd?: Prisma.SortOrder
-  additionalWheels?: Prisma.SortOrder
-  daysParked?: Prisma.SortOrder
-  isUprighted?: Prisma.SortOrder
-  isGroundWithdraw?: Prisma.SortOrder
-  isOffRoad?: Prisma.SortOrder
-  origin?: Prisma.SortOrder
-  destiny?: Prisma.SortOrder
-  workerBase?: Prisma.SortOrder
-  reason?: Prisma.SortOrder
-  explanation?: Prisma.SortOrder
+  wheelDolliesQtd?: Prisma.SortOrderInput | Prisma.SortOrder
+  additionalWheels?: Prisma.SortOrderInput | Prisma.SortOrder
+  daysParked?: Prisma.SortOrderInput | Prisma.SortOrder
+  isUprighted?: Prisma.SortOrderInput | Prisma.SortOrder
+  isGroundWithdraw?: Prisma.SortOrderInput | Prisma.SortOrder
+  isOffRoad?: Prisma.SortOrderInput | Prisma.SortOrder
+  origin?: Prisma.SortOrderInput | Prisma.SortOrder
+  destiny?: Prisma.SortOrderInput | Prisma.SortOrder
+  workerBase?: Prisma.SortOrderInput | Prisma.SortOrder
+  reason?: Prisma.SortOrderInput | Prisma.SortOrder
+  explanation?: Prisma.SortOrderInput | Prisma.SortOrder
   orderProtocol?: Prisma.SortOrder
   _count?: Prisma.SpecialBudgetCountOrderByAggregateInput
   _avg?: Prisma.SpecialBudgetAvgOrderByAggregateInput
@@ -386,34 +386,34 @@ export type SpecialBudgetScalarWhereWithAggregatesInput = {
   id?: Prisma.IntWithAggregatesFilter<"SpecialBudget"> | number
   status?: Prisma.StringWithAggregatesFilter<"SpecialBudget"> | string
   cost?: Prisma.FloatWithAggregatesFilter<"SpecialBudget"> | number
-  wheelDolliesQtd?: Prisma.IntWithAggregatesFilter<"SpecialBudget"> | number
-  additionalWheels?: Prisma.IntWithAggregatesFilter<"SpecialBudget"> | number
-  daysParked?: Prisma.IntWithAggregatesFilter<"SpecialBudget"> | number
-  isUprighted?: Prisma.BoolWithAggregatesFilter<"SpecialBudget"> | boolean
-  isGroundWithdraw?: Prisma.BoolWithAggregatesFilter<"SpecialBudget"> | boolean
-  isOffRoad?: Prisma.BoolWithAggregatesFilter<"SpecialBudget"> | boolean
-  origin?: Prisma.StringWithAggregatesFilter<"SpecialBudget"> | string
-  destiny?: Prisma.StringWithAggregatesFilter<"SpecialBudget"> | string
-  workerBase?: Prisma.StringWithAggregatesFilter<"SpecialBudget"> | string
-  reason?: Prisma.StringWithAggregatesFilter<"SpecialBudget"> | string
-  explanation?: Prisma.StringWithAggregatesFilter<"SpecialBudget"> | string
+  wheelDolliesQtd?: Prisma.IntNullableWithAggregatesFilter<"SpecialBudget"> | number | null
+  additionalWheels?: Prisma.IntNullableWithAggregatesFilter<"SpecialBudget"> | number | null
+  daysParked?: Prisma.IntNullableWithAggregatesFilter<"SpecialBudget"> | number | null
+  isUprighted?: Prisma.BoolNullableWithAggregatesFilter<"SpecialBudget"> | boolean | null
+  isGroundWithdraw?: Prisma.BoolNullableWithAggregatesFilter<"SpecialBudget"> | boolean | null
+  isOffRoad?: Prisma.BoolNullableWithAggregatesFilter<"SpecialBudget"> | boolean | null
+  origin?: Prisma.StringNullableWithAggregatesFilter<"SpecialBudget"> | string | null
+  destiny?: Prisma.StringNullableWithAggregatesFilter<"SpecialBudget"> | string | null
+  workerBase?: Prisma.StringNullableWithAggregatesFilter<"SpecialBudget"> | string | null
+  reason?: Prisma.StringNullableWithAggregatesFilter<"SpecialBudget"> | string | null
+  explanation?: Prisma.StringNullableWithAggregatesFilter<"SpecialBudget"> | string | null
   orderProtocol?: Prisma.StringWithAggregatesFilter<"SpecialBudget"> | string
 }
 
 export type SpecialBudgetCreateInput = {
   status: string
   cost: number
-  wheelDolliesQtd: number
-  additionalWheels: number
-  daysParked: number
-  isUprighted: boolean
-  isGroundWithdraw: boolean
-  isOffRoad: boolean
-  origin: string
-  destiny: string
-  workerBase: string
-  reason: string
-  explanation: string
+  wheelDolliesQtd?: number | null
+  additionalWheels?: number | null
+  daysParked?: number | null
+  isUprighted?: boolean | null
+  isGroundWithdraw?: boolean | null
+  isOffRoad?: boolean | null
+  origin?: string | null
+  destiny?: string | null
+  workerBase?: string | null
+  reason?: string | null
+  explanation?: string | null
   fk_order_protocol: Prisma.OrderCreateNestedOneWithoutSpecialBudgetsInput
 }
 
@@ -421,34 +421,34 @@ export type SpecialBudgetUncheckedCreateInput = {
   id?: number
   status: string
   cost: number
-  wheelDolliesQtd: number
-  additionalWheels: number
-  daysParked: number
-  isUprighted: boolean
-  isGroundWithdraw: boolean
-  isOffRoad: boolean
-  origin: string
-  destiny: string
-  workerBase: string
-  reason: string
-  explanation: string
+  wheelDolliesQtd?: number | null
+  additionalWheels?: number | null
+  daysParked?: number | null
+  isUprighted?: boolean | null
+  isGroundWithdraw?: boolean | null
+  isOffRoad?: boolean | null
+  origin?: string | null
+  destiny?: string | null
+  workerBase?: string | null
+  reason?: string | null
+  explanation?: string | null
   orderProtocol: string
 }
 
 export type SpecialBudgetUpdateInput = {
   status?: Prisma.StringFieldUpdateOperationsInput | string
   cost?: Prisma.FloatFieldUpdateOperationsInput | number
-  wheelDolliesQtd?: Prisma.IntFieldUpdateOperationsInput | number
-  additionalWheels?: Prisma.IntFieldUpdateOperationsInput | number
-  daysParked?: Prisma.IntFieldUpdateOperationsInput | number
-  isUprighted?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  isGroundWithdraw?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  isOffRoad?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  origin?: Prisma.StringFieldUpdateOperationsInput | string
-  destiny?: Prisma.StringFieldUpdateOperationsInput | string
-  workerBase?: Prisma.StringFieldUpdateOperationsInput | string
-  reason?: Prisma.StringFieldUpdateOperationsInput | string
-  explanation?: Prisma.StringFieldUpdateOperationsInput | string
+  wheelDolliesQtd?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  additionalWheels?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  daysParked?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  isUprighted?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  isGroundWithdraw?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  isOffRoad?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  origin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  destiny?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  workerBase?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  explanation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   fk_order_protocol?: Prisma.OrderUpdateOneRequiredWithoutSpecialBudgetsNestedInput
 }
 
@@ -456,17 +456,17 @@ export type SpecialBudgetUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.StringFieldUpdateOperationsInput | string
   cost?: Prisma.FloatFieldUpdateOperationsInput | number
-  wheelDolliesQtd?: Prisma.IntFieldUpdateOperationsInput | number
-  additionalWheels?: Prisma.IntFieldUpdateOperationsInput | number
-  daysParked?: Prisma.IntFieldUpdateOperationsInput | number
-  isUprighted?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  isGroundWithdraw?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  isOffRoad?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  origin?: Prisma.StringFieldUpdateOperationsInput | string
-  destiny?: Prisma.StringFieldUpdateOperationsInput | string
-  workerBase?: Prisma.StringFieldUpdateOperationsInput | string
-  reason?: Prisma.StringFieldUpdateOperationsInput | string
-  explanation?: Prisma.StringFieldUpdateOperationsInput | string
+  wheelDolliesQtd?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  additionalWheels?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  daysParked?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  isUprighted?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  isGroundWithdraw?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  isOffRoad?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  origin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  destiny?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  workerBase?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  explanation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   orderProtocol?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
@@ -474,51 +474,51 @@ export type SpecialBudgetCreateManyInput = {
   id?: number
   status: string
   cost: number
-  wheelDolliesQtd: number
-  additionalWheels: number
-  daysParked: number
-  isUprighted: boolean
-  isGroundWithdraw: boolean
-  isOffRoad: boolean
-  origin: string
-  destiny: string
-  workerBase: string
-  reason: string
-  explanation: string
+  wheelDolliesQtd?: number | null
+  additionalWheels?: number | null
+  daysParked?: number | null
+  isUprighted?: boolean | null
+  isGroundWithdraw?: boolean | null
+  isOffRoad?: boolean | null
+  origin?: string | null
+  destiny?: string | null
+  workerBase?: string | null
+  reason?: string | null
+  explanation?: string | null
   orderProtocol: string
 }
 
 export type SpecialBudgetUpdateManyMutationInput = {
   status?: Prisma.StringFieldUpdateOperationsInput | string
   cost?: Prisma.FloatFieldUpdateOperationsInput | number
-  wheelDolliesQtd?: Prisma.IntFieldUpdateOperationsInput | number
-  additionalWheels?: Prisma.IntFieldUpdateOperationsInput | number
-  daysParked?: Prisma.IntFieldUpdateOperationsInput | number
-  isUprighted?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  isGroundWithdraw?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  isOffRoad?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  origin?: Prisma.StringFieldUpdateOperationsInput | string
-  destiny?: Prisma.StringFieldUpdateOperationsInput | string
-  workerBase?: Prisma.StringFieldUpdateOperationsInput | string
-  reason?: Prisma.StringFieldUpdateOperationsInput | string
-  explanation?: Prisma.StringFieldUpdateOperationsInput | string
+  wheelDolliesQtd?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  additionalWheels?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  daysParked?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  isUprighted?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  isGroundWithdraw?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  isOffRoad?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  origin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  destiny?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  workerBase?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  explanation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type SpecialBudgetUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.StringFieldUpdateOperationsInput | string
   cost?: Prisma.FloatFieldUpdateOperationsInput | number
-  wheelDolliesQtd?: Prisma.IntFieldUpdateOperationsInput | number
-  additionalWheels?: Prisma.IntFieldUpdateOperationsInput | number
-  daysParked?: Prisma.IntFieldUpdateOperationsInput | number
-  isUprighted?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  isGroundWithdraw?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  isOffRoad?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  origin?: Prisma.StringFieldUpdateOperationsInput | string
-  destiny?: Prisma.StringFieldUpdateOperationsInput | string
-  workerBase?: Prisma.StringFieldUpdateOperationsInput | string
-  reason?: Prisma.StringFieldUpdateOperationsInput | string
-  explanation?: Prisma.StringFieldUpdateOperationsInput | string
+  wheelDolliesQtd?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  additionalWheels?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  daysParked?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  isUprighted?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  isGroundWithdraw?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  isOffRoad?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  origin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  destiny?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  workerBase?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  explanation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   orderProtocol?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
@@ -652,6 +652,22 @@ export type FloatFieldUpdateOperationsInput = {
   divide?: number
 }
 
+export type NullableIntFieldUpdateOperationsInput = {
+  set?: number | null
+  increment?: number
+  decrement?: number
+  multiply?: number
+  divide?: number
+}
+
+export type NullableBoolFieldUpdateOperationsInput = {
+  set?: boolean | null
+}
+
+export type NullableStringFieldUpdateOperationsInput = {
+  set?: string | null
+}
+
 export type IntFieldUpdateOperationsInput = {
   set?: number
   increment?: number
@@ -660,41 +676,37 @@ export type IntFieldUpdateOperationsInput = {
   divide?: number
 }
 
-export type BoolFieldUpdateOperationsInput = {
-  set?: boolean
-}
-
 export type SpecialBudgetCreateWithoutFk_order_protocolInput = {
   status: string
   cost: number
-  wheelDolliesQtd: number
-  additionalWheels: number
-  daysParked: number
-  isUprighted: boolean
-  isGroundWithdraw: boolean
-  isOffRoad: boolean
-  origin: string
-  destiny: string
-  workerBase: string
-  reason: string
-  explanation: string
+  wheelDolliesQtd?: number | null
+  additionalWheels?: number | null
+  daysParked?: number | null
+  isUprighted?: boolean | null
+  isGroundWithdraw?: boolean | null
+  isOffRoad?: boolean | null
+  origin?: string | null
+  destiny?: string | null
+  workerBase?: string | null
+  reason?: string | null
+  explanation?: string | null
 }
 
 export type SpecialBudgetUncheckedCreateWithoutFk_order_protocolInput = {
   id?: number
   status: string
   cost: number
-  wheelDolliesQtd: number
-  additionalWheels: number
-  daysParked: number
-  isUprighted: boolean
-  isGroundWithdraw: boolean
-  isOffRoad: boolean
-  origin: string
-  destiny: string
-  workerBase: string
-  reason: string
-  explanation: string
+  wheelDolliesQtd?: number | null
+  additionalWheels?: number | null
+  daysParked?: number | null
+  isUprighted?: boolean | null
+  isGroundWithdraw?: boolean | null
+  isOffRoad?: boolean | null
+  origin?: string | null
+  destiny?: string | null
+  workerBase?: string | null
+  reason?: string | null
+  explanation?: string | null
 }
 
 export type SpecialBudgetCreateOrConnectWithoutFk_order_protocolInput = {
@@ -729,17 +741,17 @@ export type SpecialBudgetScalarWhereInput = {
   id?: Prisma.IntFilter<"SpecialBudget"> | number
   status?: Prisma.StringFilter<"SpecialBudget"> | string
   cost?: Prisma.FloatFilter<"SpecialBudget"> | number
-  wheelDolliesQtd?: Prisma.IntFilter<"SpecialBudget"> | number
-  additionalWheels?: Prisma.IntFilter<"SpecialBudget"> | number
-  daysParked?: Prisma.IntFilter<"SpecialBudget"> | number
-  isUprighted?: Prisma.BoolFilter<"SpecialBudget"> | boolean
-  isGroundWithdraw?: Prisma.BoolFilter<"SpecialBudget"> | boolean
-  isOffRoad?: Prisma.BoolFilter<"SpecialBudget"> | boolean
-  origin?: Prisma.StringFilter<"SpecialBudget"> | string
-  destiny?: Prisma.StringFilter<"SpecialBudget"> | string
-  workerBase?: Prisma.StringFilter<"SpecialBudget"> | string
-  reason?: Prisma.StringFilter<"SpecialBudget"> | string
-  explanation?: Prisma.StringFilter<"SpecialBudget"> | string
+  wheelDolliesQtd?: Prisma.IntNullableFilter<"SpecialBudget"> | number | null
+  additionalWheels?: Prisma.IntNullableFilter<"SpecialBudget"> | number | null
+  daysParked?: Prisma.IntNullableFilter<"SpecialBudget"> | number | null
+  isUprighted?: Prisma.BoolNullableFilter<"SpecialBudget"> | boolean | null
+  isGroundWithdraw?: Prisma.BoolNullableFilter<"SpecialBudget"> | boolean | null
+  isOffRoad?: Prisma.BoolNullableFilter<"SpecialBudget"> | boolean | null
+  origin?: Prisma.StringNullableFilter<"SpecialBudget"> | string | null
+  destiny?: Prisma.StringNullableFilter<"SpecialBudget"> | string | null
+  workerBase?: Prisma.StringNullableFilter<"SpecialBudget"> | string | null
+  reason?: Prisma.StringNullableFilter<"SpecialBudget"> | string | null
+  explanation?: Prisma.StringNullableFilter<"SpecialBudget"> | string | null
   orderProtocol?: Prisma.StringFilter<"SpecialBudget"> | string
 }
 
@@ -747,67 +759,67 @@ export type SpecialBudgetCreateManyFk_order_protocolInput = {
   id?: number
   status: string
   cost: number
-  wheelDolliesQtd: number
-  additionalWheels: number
-  daysParked: number
-  isUprighted: boolean
-  isGroundWithdraw: boolean
-  isOffRoad: boolean
-  origin: string
-  destiny: string
-  workerBase: string
-  reason: string
-  explanation: string
+  wheelDolliesQtd?: number | null
+  additionalWheels?: number | null
+  daysParked?: number | null
+  isUprighted?: boolean | null
+  isGroundWithdraw?: boolean | null
+  isOffRoad?: boolean | null
+  origin?: string | null
+  destiny?: string | null
+  workerBase?: string | null
+  reason?: string | null
+  explanation?: string | null
 }
 
 export type SpecialBudgetUpdateWithoutFk_order_protocolInput = {
   status?: Prisma.StringFieldUpdateOperationsInput | string
   cost?: Prisma.FloatFieldUpdateOperationsInput | number
-  wheelDolliesQtd?: Prisma.IntFieldUpdateOperationsInput | number
-  additionalWheels?: Prisma.IntFieldUpdateOperationsInput | number
-  daysParked?: Prisma.IntFieldUpdateOperationsInput | number
-  isUprighted?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  isGroundWithdraw?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  isOffRoad?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  origin?: Prisma.StringFieldUpdateOperationsInput | string
-  destiny?: Prisma.StringFieldUpdateOperationsInput | string
-  workerBase?: Prisma.StringFieldUpdateOperationsInput | string
-  reason?: Prisma.StringFieldUpdateOperationsInput | string
-  explanation?: Prisma.StringFieldUpdateOperationsInput | string
+  wheelDolliesQtd?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  additionalWheels?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  daysParked?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  isUprighted?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  isGroundWithdraw?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  isOffRoad?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  origin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  destiny?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  workerBase?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  explanation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type SpecialBudgetUncheckedUpdateWithoutFk_order_protocolInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.StringFieldUpdateOperationsInput | string
   cost?: Prisma.FloatFieldUpdateOperationsInput | number
-  wheelDolliesQtd?: Prisma.IntFieldUpdateOperationsInput | number
-  additionalWheels?: Prisma.IntFieldUpdateOperationsInput | number
-  daysParked?: Prisma.IntFieldUpdateOperationsInput | number
-  isUprighted?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  isGroundWithdraw?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  isOffRoad?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  origin?: Prisma.StringFieldUpdateOperationsInput | string
-  destiny?: Prisma.StringFieldUpdateOperationsInput | string
-  workerBase?: Prisma.StringFieldUpdateOperationsInput | string
-  reason?: Prisma.StringFieldUpdateOperationsInput | string
-  explanation?: Prisma.StringFieldUpdateOperationsInput | string
+  wheelDolliesQtd?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  additionalWheels?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  daysParked?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  isUprighted?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  isGroundWithdraw?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  isOffRoad?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  origin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  destiny?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  workerBase?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  explanation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type SpecialBudgetUncheckedUpdateManyWithoutFk_order_protocolInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.StringFieldUpdateOperationsInput | string
   cost?: Prisma.FloatFieldUpdateOperationsInput | number
-  wheelDolliesQtd?: Prisma.IntFieldUpdateOperationsInput | number
-  additionalWheels?: Prisma.IntFieldUpdateOperationsInput | number
-  daysParked?: Prisma.IntFieldUpdateOperationsInput | number
-  isUprighted?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  isGroundWithdraw?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  isOffRoad?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  origin?: Prisma.StringFieldUpdateOperationsInput | string
-  destiny?: Prisma.StringFieldUpdateOperationsInput | string
-  workerBase?: Prisma.StringFieldUpdateOperationsInput | string
-  reason?: Prisma.StringFieldUpdateOperationsInput | string
-  explanation?: Prisma.StringFieldUpdateOperationsInput | string
+  wheelDolliesQtd?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  additionalWheels?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  daysParked?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  isUprighted?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  isGroundWithdraw?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  isOffRoad?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  origin?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  destiny?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  workerBase?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  explanation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 
@@ -907,17 +919,17 @@ export type $SpecialBudgetPayload<ExtArgs extends runtime.Types.Extensions.Inter
     id: number
     status: string
     cost: number
-    wheelDolliesQtd: number
-    additionalWheels: number
-    daysParked: number
-    isUprighted: boolean
-    isGroundWithdraw: boolean
-    isOffRoad: boolean
-    origin: string
-    destiny: string
-    workerBase: string
-    reason: string
-    explanation: string
+    wheelDolliesQtd: number | null
+    additionalWheels: number | null
+    daysParked: number | null
+    isUprighted: boolean | null
+    isGroundWithdraw: boolean | null
+    isOffRoad: boolean | null
+    origin: string | null
+    destiny: string | null
+    workerBase: string | null
+    reason: string | null
+    explanation: string | null
     orderProtocol: string
   }, ExtArgs["result"]["specialBudget"]>
   composites: {}

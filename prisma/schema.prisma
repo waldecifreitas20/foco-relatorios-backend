@@ -22,21 +22,23 @@ model Order {
   mobilityService MobilityService[] 
 }
 
+
+
 model SpecialBudget {
   id               Int     @id @default(autoincrement())
-  status           String
+  status           String  
   cost             Float
-  wheelDolliesQtd  Int
-  additionalWheels Int
-  daysParked       Int
-  isUprighted      Boolean
-  isGroundWithdraw Boolean
-  isOffRoad        Boolean
-  origin           String
-  destiny          String
-  workerBase       String
-  reason           String
-  explanation      String
+  wheelDolliesQtd  Int?
+  additionalWheels Int?
+  daysParked       Int?
+  isUprighted      Boolean?
+  isGroundWithdraw Boolean?
+  isOffRoad        Boolean?
+  origin           String?
+  destiny          String?
+  workerBase       String?
+  reason           String? 
+  explanation      String?
 
   orderProtocol String
   fk_order_protocol Order @relation(references: [protocol], fields: [orderProtocol])
