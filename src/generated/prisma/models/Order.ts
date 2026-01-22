@@ -27,28 +27,34 @@ export type AggregateOrder = {
 export type OrderMinAggregateOutputType = {
   protocol: string | null
   plate: string | null
+  client: string | null
+  service: string | null
+  status: string | null
+  providerProtocol: string | null
   date: string | null
   hour: string | null
-  status: string | null
-  service: string | null
 }
 
 export type OrderMaxAggregateOutputType = {
   protocol: string | null
   plate: string | null
+  client: string | null
+  service: string | null
+  status: string | null
+  providerProtocol: string | null
   date: string | null
   hour: string | null
-  status: string | null
-  service: string | null
 }
 
 export type OrderCountAggregateOutputType = {
   protocol: number
   plate: number
+  client: number
+  service: number
+  status: number
+  providerProtocol: number
   date: number
   hour: number
-  status: number
-  service: number
   _all: number
 }
 
@@ -56,28 +62,34 @@ export type OrderCountAggregateOutputType = {
 export type OrderMinAggregateInputType = {
   protocol?: true
   plate?: true
+  client?: true
+  service?: true
+  status?: true
+  providerProtocol?: true
   date?: true
   hour?: true
-  status?: true
-  service?: true
 }
 
 export type OrderMaxAggregateInputType = {
   protocol?: true
   plate?: true
+  client?: true
+  service?: true
+  status?: true
+  providerProtocol?: true
   date?: true
   hour?: true
-  status?: true
-  service?: true
 }
 
 export type OrderCountAggregateInputType = {
   protocol?: true
   plate?: true
+  client?: true
+  service?: true
+  status?: true
+  providerProtocol?: true
   date?: true
   hour?: true
-  status?: true
-  service?: true
   _all?: true
 }
 
@@ -156,10 +168,12 @@ export type OrderGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalAr
 export type OrderGroupByOutputType = {
   protocol: string
   plate: string
+  client: string
+  service: string
+  status: string
+  providerProtocol: string
   date: string
   hour: string
-  status: string
-  service: string
   _count: OrderCountAggregateOutputType | null
   _min: OrderMinAggregateOutputType | null
   _max: OrderMaxAggregateOutputType | null
@@ -186,10 +200,12 @@ export type OrderWhereInput = {
   NOT?: Prisma.OrderWhereInput | Prisma.OrderWhereInput[]
   protocol?: Prisma.StringFilter<"Order"> | string
   plate?: Prisma.StringFilter<"Order"> | string
+  client?: Prisma.StringFilter<"Order"> | string
+  service?: Prisma.StringFilter<"Order"> | string
+  status?: Prisma.StringFilter<"Order"> | string
+  providerProtocol?: Prisma.StringFilter<"Order"> | string
   date?: Prisma.StringFilter<"Order"> | string
   hour?: Prisma.StringFilter<"Order"> | string
-  status?: Prisma.StringFilter<"Order"> | string
-  service?: Prisma.StringFilter<"Order"> | string
   specialBudgets?: Prisma.SpecialBudgetListRelationFilter
   mobilityService?: Prisma.MobilityServiceListRelationFilter
 }
@@ -197,10 +213,12 @@ export type OrderWhereInput = {
 export type OrderOrderByWithRelationInput = {
   protocol?: Prisma.SortOrder
   plate?: Prisma.SortOrder
+  client?: Prisma.SortOrder
+  service?: Prisma.SortOrder
+  status?: Prisma.SortOrder
+  providerProtocol?: Prisma.SortOrder
   date?: Prisma.SortOrder
   hour?: Prisma.SortOrder
-  status?: Prisma.SortOrder
-  service?: Prisma.SortOrder
   specialBudgets?: Prisma.SpecialBudgetOrderByRelationAggregateInput
   mobilityService?: Prisma.MobilityServiceOrderByRelationAggregateInput
 }
@@ -211,10 +229,12 @@ export type OrderWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.OrderWhereInput[]
   NOT?: Prisma.OrderWhereInput | Prisma.OrderWhereInput[]
   plate?: Prisma.StringFilter<"Order"> | string
+  client?: Prisma.StringFilter<"Order"> | string
+  service?: Prisma.StringFilter<"Order"> | string
+  status?: Prisma.StringFilter<"Order"> | string
+  providerProtocol?: Prisma.StringFilter<"Order"> | string
   date?: Prisma.StringFilter<"Order"> | string
   hour?: Prisma.StringFilter<"Order"> | string
-  status?: Prisma.StringFilter<"Order"> | string
-  service?: Prisma.StringFilter<"Order"> | string
   specialBudgets?: Prisma.SpecialBudgetListRelationFilter
   mobilityService?: Prisma.MobilityServiceListRelationFilter
 }, "protocol">
@@ -222,10 +242,12 @@ export type OrderWhereUniqueInput = Prisma.AtLeast<{
 export type OrderOrderByWithAggregationInput = {
   protocol?: Prisma.SortOrder
   plate?: Prisma.SortOrder
+  client?: Prisma.SortOrder
+  service?: Prisma.SortOrder
+  status?: Prisma.SortOrder
+  providerProtocol?: Prisma.SortOrder
   date?: Prisma.SortOrder
   hour?: Prisma.SortOrder
-  status?: Prisma.SortOrder
-  service?: Prisma.SortOrder
   _count?: Prisma.OrderCountOrderByAggregateInput
   _max?: Prisma.OrderMaxOrderByAggregateInput
   _min?: Prisma.OrderMinOrderByAggregateInput
@@ -237,19 +259,23 @@ export type OrderScalarWhereWithAggregatesInput = {
   NOT?: Prisma.OrderScalarWhereWithAggregatesInput | Prisma.OrderScalarWhereWithAggregatesInput[]
   protocol?: Prisma.StringWithAggregatesFilter<"Order"> | string
   plate?: Prisma.StringWithAggregatesFilter<"Order"> | string
+  client?: Prisma.StringWithAggregatesFilter<"Order"> | string
+  service?: Prisma.StringWithAggregatesFilter<"Order"> | string
+  status?: Prisma.StringWithAggregatesFilter<"Order"> | string
+  providerProtocol?: Prisma.StringWithAggregatesFilter<"Order"> | string
   date?: Prisma.StringWithAggregatesFilter<"Order"> | string
   hour?: Prisma.StringWithAggregatesFilter<"Order"> | string
-  status?: Prisma.StringWithAggregatesFilter<"Order"> | string
-  service?: Prisma.StringWithAggregatesFilter<"Order"> | string
 }
 
 export type OrderCreateInput = {
   protocol: string
   plate: string
+  client: string
+  service: string
+  status: string
+  providerProtocol: string
   date: string
   hour: string
-  status: string
-  service: string
   specialBudgets?: Prisma.SpecialBudgetCreateNestedManyWithoutFk_order_protocolInput
   mobilityService?: Prisma.MobilityServiceCreateNestedManyWithoutFk_order_protocolInput
 }
@@ -257,10 +283,12 @@ export type OrderCreateInput = {
 export type OrderUncheckedCreateInput = {
   protocol: string
   plate: string
+  client: string
+  service: string
+  status: string
+  providerProtocol: string
   date: string
   hour: string
-  status: string
-  service: string
   specialBudgets?: Prisma.SpecialBudgetUncheckedCreateNestedManyWithoutFk_order_protocolInput
   mobilityService?: Prisma.MobilityServiceUncheckedCreateNestedManyWithoutFk_order_protocolInput
 }
@@ -268,10 +296,12 @@ export type OrderUncheckedCreateInput = {
 export type OrderUpdateInput = {
   protocol?: Prisma.StringFieldUpdateOperationsInput | string
   plate?: Prisma.StringFieldUpdateOperationsInput | string
+  client?: Prisma.StringFieldUpdateOperationsInput | string
+  service?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  providerProtocol?: Prisma.StringFieldUpdateOperationsInput | string
   date?: Prisma.StringFieldUpdateOperationsInput | string
   hour?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.StringFieldUpdateOperationsInput | string
-  service?: Prisma.StringFieldUpdateOperationsInput | string
   specialBudgets?: Prisma.SpecialBudgetUpdateManyWithoutFk_order_protocolNestedInput
   mobilityService?: Prisma.MobilityServiceUpdateManyWithoutFk_order_protocolNestedInput
 }
@@ -279,10 +309,12 @@ export type OrderUpdateInput = {
 export type OrderUncheckedUpdateInput = {
   protocol?: Prisma.StringFieldUpdateOperationsInput | string
   plate?: Prisma.StringFieldUpdateOperationsInput | string
+  client?: Prisma.StringFieldUpdateOperationsInput | string
+  service?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  providerProtocol?: Prisma.StringFieldUpdateOperationsInput | string
   date?: Prisma.StringFieldUpdateOperationsInput | string
   hour?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.StringFieldUpdateOperationsInput | string
-  service?: Prisma.StringFieldUpdateOperationsInput | string
   specialBudgets?: Prisma.SpecialBudgetUncheckedUpdateManyWithoutFk_order_protocolNestedInput
   mobilityService?: Prisma.MobilityServiceUncheckedUpdateManyWithoutFk_order_protocolNestedInput
 }
@@ -290,55 +322,67 @@ export type OrderUncheckedUpdateInput = {
 export type OrderCreateManyInput = {
   protocol: string
   plate: string
+  client: string
+  service: string
+  status: string
+  providerProtocol: string
   date: string
   hour: string
-  status: string
-  service: string
 }
 
 export type OrderUpdateManyMutationInput = {
   protocol?: Prisma.StringFieldUpdateOperationsInput | string
   plate?: Prisma.StringFieldUpdateOperationsInput | string
+  client?: Prisma.StringFieldUpdateOperationsInput | string
+  service?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  providerProtocol?: Prisma.StringFieldUpdateOperationsInput | string
   date?: Prisma.StringFieldUpdateOperationsInput | string
   hour?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.StringFieldUpdateOperationsInput | string
-  service?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type OrderUncheckedUpdateManyInput = {
   protocol?: Prisma.StringFieldUpdateOperationsInput | string
   plate?: Prisma.StringFieldUpdateOperationsInput | string
+  client?: Prisma.StringFieldUpdateOperationsInput | string
+  service?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  providerProtocol?: Prisma.StringFieldUpdateOperationsInput | string
   date?: Prisma.StringFieldUpdateOperationsInput | string
   hour?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.StringFieldUpdateOperationsInput | string
-  service?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type OrderCountOrderByAggregateInput = {
   protocol?: Prisma.SortOrder
   plate?: Prisma.SortOrder
+  client?: Prisma.SortOrder
+  service?: Prisma.SortOrder
+  status?: Prisma.SortOrder
+  providerProtocol?: Prisma.SortOrder
   date?: Prisma.SortOrder
   hour?: Prisma.SortOrder
-  status?: Prisma.SortOrder
-  service?: Prisma.SortOrder
 }
 
 export type OrderMaxOrderByAggregateInput = {
   protocol?: Prisma.SortOrder
   plate?: Prisma.SortOrder
+  client?: Prisma.SortOrder
+  service?: Prisma.SortOrder
+  status?: Prisma.SortOrder
+  providerProtocol?: Prisma.SortOrder
   date?: Prisma.SortOrder
   hour?: Prisma.SortOrder
-  status?: Prisma.SortOrder
-  service?: Prisma.SortOrder
 }
 
 export type OrderMinOrderByAggregateInput = {
   protocol?: Prisma.SortOrder
   plate?: Prisma.SortOrder
+  client?: Prisma.SortOrder
+  service?: Prisma.SortOrder
+  status?: Prisma.SortOrder
+  providerProtocol?: Prisma.SortOrder
   date?: Prisma.SortOrder
   hour?: Prisma.SortOrder
-  status?: Prisma.SortOrder
-  service?: Prisma.SortOrder
 }
 
 export type OrderScalarRelationFilter = {
@@ -381,20 +425,24 @@ export type OrderUpdateOneRequiredWithoutMobilityServiceNestedInput = {
 export type OrderCreateWithoutSpecialBudgetsInput = {
   protocol: string
   plate: string
+  client: string
+  service: string
+  status: string
+  providerProtocol: string
   date: string
   hour: string
-  status: string
-  service: string
   mobilityService?: Prisma.MobilityServiceCreateNestedManyWithoutFk_order_protocolInput
 }
 
 export type OrderUncheckedCreateWithoutSpecialBudgetsInput = {
   protocol: string
   plate: string
+  client: string
+  service: string
+  status: string
+  providerProtocol: string
   date: string
   hour: string
-  status: string
-  service: string
   mobilityService?: Prisma.MobilityServiceUncheckedCreateNestedManyWithoutFk_order_protocolInput
 }
 
@@ -417,40 +465,48 @@ export type OrderUpdateToOneWithWhereWithoutSpecialBudgetsInput = {
 export type OrderUpdateWithoutSpecialBudgetsInput = {
   protocol?: Prisma.StringFieldUpdateOperationsInput | string
   plate?: Prisma.StringFieldUpdateOperationsInput | string
+  client?: Prisma.StringFieldUpdateOperationsInput | string
+  service?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  providerProtocol?: Prisma.StringFieldUpdateOperationsInput | string
   date?: Prisma.StringFieldUpdateOperationsInput | string
   hour?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.StringFieldUpdateOperationsInput | string
-  service?: Prisma.StringFieldUpdateOperationsInput | string
   mobilityService?: Prisma.MobilityServiceUpdateManyWithoutFk_order_protocolNestedInput
 }
 
 export type OrderUncheckedUpdateWithoutSpecialBudgetsInput = {
   protocol?: Prisma.StringFieldUpdateOperationsInput | string
   plate?: Prisma.StringFieldUpdateOperationsInput | string
+  client?: Prisma.StringFieldUpdateOperationsInput | string
+  service?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  providerProtocol?: Prisma.StringFieldUpdateOperationsInput | string
   date?: Prisma.StringFieldUpdateOperationsInput | string
   hour?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.StringFieldUpdateOperationsInput | string
-  service?: Prisma.StringFieldUpdateOperationsInput | string
   mobilityService?: Prisma.MobilityServiceUncheckedUpdateManyWithoutFk_order_protocolNestedInput
 }
 
 export type OrderCreateWithoutMobilityServiceInput = {
   protocol: string
   plate: string
+  client: string
+  service: string
+  status: string
+  providerProtocol: string
   date: string
   hour: string
-  status: string
-  service: string
   specialBudgets?: Prisma.SpecialBudgetCreateNestedManyWithoutFk_order_protocolInput
 }
 
 export type OrderUncheckedCreateWithoutMobilityServiceInput = {
   protocol: string
   plate: string
+  client: string
+  service: string
+  status: string
+  providerProtocol: string
   date: string
   hour: string
-  status: string
-  service: string
   specialBudgets?: Prisma.SpecialBudgetUncheckedCreateNestedManyWithoutFk_order_protocolInput
 }
 
@@ -473,20 +529,24 @@ export type OrderUpdateToOneWithWhereWithoutMobilityServiceInput = {
 export type OrderUpdateWithoutMobilityServiceInput = {
   protocol?: Prisma.StringFieldUpdateOperationsInput | string
   plate?: Prisma.StringFieldUpdateOperationsInput | string
+  client?: Prisma.StringFieldUpdateOperationsInput | string
+  service?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  providerProtocol?: Prisma.StringFieldUpdateOperationsInput | string
   date?: Prisma.StringFieldUpdateOperationsInput | string
   hour?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.StringFieldUpdateOperationsInput | string
-  service?: Prisma.StringFieldUpdateOperationsInput | string
   specialBudgets?: Prisma.SpecialBudgetUpdateManyWithoutFk_order_protocolNestedInput
 }
 
 export type OrderUncheckedUpdateWithoutMobilityServiceInput = {
   protocol?: Prisma.StringFieldUpdateOperationsInput | string
   plate?: Prisma.StringFieldUpdateOperationsInput | string
+  client?: Prisma.StringFieldUpdateOperationsInput | string
+  service?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  providerProtocol?: Prisma.StringFieldUpdateOperationsInput | string
   date?: Prisma.StringFieldUpdateOperationsInput | string
   hour?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.StringFieldUpdateOperationsInput | string
-  service?: Prisma.StringFieldUpdateOperationsInput | string
   specialBudgets?: Prisma.SpecialBudgetUncheckedUpdateManyWithoutFk_order_protocolNestedInput
 }
 
@@ -533,10 +593,12 @@ export type OrderCountOutputTypeCountMobilityServiceArgs<ExtArgs extends runtime
 export type OrderSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   protocol?: boolean
   plate?: boolean
+  client?: boolean
+  service?: boolean
+  status?: boolean
+  providerProtocol?: boolean
   date?: boolean
   hour?: boolean
-  status?: boolean
-  service?: boolean
   specialBudgets?: boolean | Prisma.Order$specialBudgetsArgs<ExtArgs>
   mobilityService?: boolean | Prisma.Order$mobilityServiceArgs<ExtArgs>
   _count?: boolean | Prisma.OrderCountOutputTypeDefaultArgs<ExtArgs>
@@ -545,31 +607,37 @@ export type OrderSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
 export type OrderSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   protocol?: boolean
   plate?: boolean
+  client?: boolean
+  service?: boolean
+  status?: boolean
+  providerProtocol?: boolean
   date?: boolean
   hour?: boolean
-  status?: boolean
-  service?: boolean
 }, ExtArgs["result"]["order"]>
 
 export type OrderSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   protocol?: boolean
   plate?: boolean
+  client?: boolean
+  service?: boolean
+  status?: boolean
+  providerProtocol?: boolean
   date?: boolean
   hour?: boolean
-  status?: boolean
-  service?: boolean
 }, ExtArgs["result"]["order"]>
 
 export type OrderSelectScalar = {
   protocol?: boolean
   plate?: boolean
+  client?: boolean
+  service?: boolean
+  status?: boolean
+  providerProtocol?: boolean
   date?: boolean
   hour?: boolean
-  status?: boolean
-  service?: boolean
 }
 
-export type OrderOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"protocol" | "plate" | "date" | "hour" | "status" | "service", ExtArgs["result"]["order"]>
+export type OrderOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"protocol" | "plate" | "client" | "service" | "status" | "providerProtocol" | "date" | "hour", ExtArgs["result"]["order"]>
 export type OrderInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   specialBudgets?: boolean | Prisma.Order$specialBudgetsArgs<ExtArgs>
   mobilityService?: boolean | Prisma.Order$mobilityServiceArgs<ExtArgs>
@@ -587,10 +655,12 @@ export type $OrderPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     protocol: string
     plate: string
+    client: string
+    service: string
+    status: string
+    providerProtocol: string
     date: string
     hour: string
-    status: string
-    service: string
   }, ExtArgs["result"]["order"]>
   composites: {}
 }
@@ -1018,10 +1088,12 @@ export interface Prisma__OrderClient<T, Null = never, ExtArgs extends runtime.Ty
 export interface OrderFieldRefs {
   readonly protocol: Prisma.FieldRef<"Order", 'String'>
   readonly plate: Prisma.FieldRef<"Order", 'String'>
+  readonly client: Prisma.FieldRef<"Order", 'String'>
+  readonly service: Prisma.FieldRef<"Order", 'String'>
+  readonly status: Prisma.FieldRef<"Order", 'String'>
+  readonly providerProtocol: Prisma.FieldRef<"Order", 'String'>
   readonly date: Prisma.FieldRef<"Order", 'String'>
   readonly hour: Prisma.FieldRef<"Order", 'String'>
-  readonly status: Prisma.FieldRef<"Order", 'String'>
-  readonly service: Prisma.FieldRef<"Order", 'String'>
 }
     
 

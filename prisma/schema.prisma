@@ -13,10 +13,12 @@ datasource db {
 model Order {
   protocol String @id
   plate    String
+  client   String
+  service  String
+  status   String
+  providerProtocol String
   date     String
   hour     String
-  status   String
-  service  String
 
   specialBudgets SpecialBudget[]
   mobilityService MobilityService[] 

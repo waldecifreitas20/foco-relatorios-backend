@@ -667,10 +667,12 @@ export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof
 export const OrderScalarFieldEnum = {
   protocol: 'protocol',
   plate: 'plate',
-  date: 'date',
-  hour: 'hour',
+  client: 'client',
+  service: 'service',
   status: 'status',
-  service: 'service'
+  providerProtocol: 'providerProtocol',
+  date: 'date',
+  hour: 'hour'
 } as const
 
 export type OrderScalarFieldEnum = (typeof OrderScalarFieldEnum)[keyof typeof OrderScalarFieldEnum]
