@@ -17,3 +17,10 @@ export interface CreateSpecialBudgetDto {
   workerBase?: string;
   explanation?: string;
 }
+
+
+export interface CreateMinimalSpecialBudgetDto {
+  cost: number;
+  status: SpecialBudgetStatus;
+  protocol: string;
+}

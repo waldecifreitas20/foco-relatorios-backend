@@ -1,25 +1,35 @@
 import { CreateOrderDto, UpdateOrderDto } from "../../dto/order.dto";
+import { CreateMinimalSpecialBudgetDto } from "../../dto/specialbudget.dto";
+import { getErrorMessage } from "../../utils/databaseErrors";
 import { OrderRepository } from "../repositories/order.repository.js";
+import { SpecialBudgetRepository } from "../repositories/specialbudget.repository";
 
 export class OrderService {
-  repo = new OrderRepository();
+  ordersRepo = new OrderRepository();
+  specialBudgetRepo = new SpecialBudgetRepository();
 
-  async create(order: CreateOrderDto) {
+
+  async create(data: CreateOrderDto) {
 
     try {
-      await this.repo.create(order);
+      const {specialBudget, ...order } = data;
+
+      await this.ordersRepo.create(order);
+      await this.specialBudgetRepo.createMinimal({...specialBudget, protocol: order.protocol} as CreateMinimalSpecialBudgetDto );
 
       return {
         status: 200,
         response: "order created"
 
       }
-    } catch (error) {
+    } catch (error: any) {
       console.log(error);
 
+      const { status, message } = getErrorMessage(error.code);
+
       return {
-        status: 502,
-        response: "An error occurred at server",
+        status: message ? status : 500,
+        response: message ?? "An error occurred at server",
       }
     }
 
@@ -28,7 +38,7 @@ export class OrderService {
 
   async getAll() {
     try {
-      const orders = await this.repo.getAll();
+      const orders = await this.ordersRepo.getAll();
 
       return {
         status: 200,
@@ -47,7 +57,7 @@ export class OrderService {
 
   async update(patch: UpdateOrderDto) {
     try {
-      await this.repo.update(patch);
+      await this.ordersRepo.update(patch);
 
       return {
         status: 204,
