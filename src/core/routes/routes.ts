@@ -43,6 +43,13 @@ appRouter.post("/special-budget/create", async (req, res) => {
   return res.status(response.status).json(response);
 });
 
+appRouter.patch("/special-budget/update", async (req, res) => {
+  const { body } = req;
+  const response = await specialBudgetService.update(body);
+  
+  return res.status(response.status).json(response);
+});
+
 
 
 export { appRouter };

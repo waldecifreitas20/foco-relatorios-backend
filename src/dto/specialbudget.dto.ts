@@ -24,3 +24,12 @@ export interface CreateMinimalSpecialBudgetDto {
   status: SpecialBudgetStatus;
   protocol: string;
 }
+
+
+export interface UpdateSpecialBudgetDto {
+  id: number;
+  cost: number;
+  status: SpecialBudgetStatus;
+  protocol: string;
+  reason: string;
+}

@@ -1,4 +1,4 @@
-import { CreateSpecialBudgetDto } from "../../dto/specialbudget.dto";
+import { CreateSpecialBudgetDto, UpdateSpecialBudgetDto } from "../../dto/specialbudget.dto";
 import { getErrorResponse } from "../../utils/databaseErrors";
 import { SpecialBudgetRepository } from "../repositories/specialbudget.repository";
 
@@ -21,8 +21,18 @@ export class SpecialBudgetService {
 
    }
 
-  async getAll() { }
+  async update(patch: UpdateSpecialBudgetDto) {
+    try {
+      await this.specialBudgetRepo.update(patch);
 
-  async update() {}
+      return {
+        status: 200,
+        response: "special budget updated",
+      };
+    } catch (error) {
+      console.error(error);
+      return getErrorResponse(error);
+    }
+  }
 
 }
