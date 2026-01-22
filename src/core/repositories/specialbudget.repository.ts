@@ -22,6 +22,9 @@ export class SpecialBudgetRepository {
         status: data.status,
         orderProtocol: data.protocol,
         reason: data.reason,
+      },
+      include: {
+        fk_order_protocol: true,
       }
     });
   }

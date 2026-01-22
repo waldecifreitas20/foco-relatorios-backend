@@ -1,4 +1,5 @@
 import { CreateSpecialBudgetDto } from "../../dto/specialbudget.dto";
+import { getErrorResponse } from "../../utils/databaseErrors";
 import { SpecialBudgetRepository } from "../repositories/specialbudget.repository";
 
 export class SpecialBudgetService {
@@ -15,7 +16,7 @@ export class SpecialBudgetService {
 
     } catch (error) {
       console.error(error);
-      
+      return getErrorResponse(error);
     }
 
    }

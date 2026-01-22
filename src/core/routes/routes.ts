@@ -1,10 +1,12 @@
 import { Router } from "express";
 import { OrderService } from "../services/order.service.js";
+import { SpecialBudgetService } from "../services/specialbudget.service.js";
 import { CreateOrderDto, UpdateOrderDto } from "../../dto/order.dto";
 
 
 const appRouter = Router();
 const orderService = new OrderService();
+const specialBudgetService = new SpecialBudgetService();
 
 /* ORDERS ROUTES */
 appRouter.post("/orders/create", async (req, res) => {
@@ -32,7 +34,15 @@ appRouter.get("/orders/all", async (req, res) => {
   return res.status(response.status).json(response);
 });
 
-/* ===================================== */
+
+/* SPECIAL BUDGET */
+appRouter.post("/special-budget/create", async (req, res) => {
+  const { body } = req;
+  const response = await specialBudgetService.create(body);
+  
+  return res.status(response.status).json(response);
+});
+
 
 
 export { appRouter };
