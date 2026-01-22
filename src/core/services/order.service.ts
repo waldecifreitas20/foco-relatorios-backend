@@ -4,6 +4,16 @@ import { getErrorMessage } from "../../utils/databaseErrors";
 import { OrderRepository } from "../repositories/order.repository.js";
 import { SpecialBudgetRepository } from "../repositories/specialbudget.repository";
 
+
+const getErrorResponse = (error: any) => {
+  const { status, message } = getErrorMessage(error.code);
+
+  return {
+    status: message ? status : 500,
+    response: message ?? "An error occurred at server",
+  }
+}
+
 export class OrderService {
   ordersRepo = new OrderRepository();
   specialBudgetRepo = new SpecialBudgetRepository();
@@ -12,10 +22,10 @@ export class OrderService {
   async create(data: CreateOrderDto) {
 
     try {
-      const {specialBudget, ...order } = data;
+      const { specialBudget, ...order } = data;
 
       await this.ordersRepo.create(order);
-      await this.specialBudgetRepo.createMinimal({...specialBudget, protocol: order.protocol} as CreateMinimalSpecialBudgetDto );
+      await this.specialBudgetRepo.createMinimal({ ...specialBudget, protocol: order.protocol } as CreateMinimalSpecialBudgetDto);
 
       return {
         status: 200,
@@ -25,12 +35,7 @@ export class OrderService {
     } catch (error: any) {
       console.log(error);
 
-      const { status, message } = getErrorMessage(error.code);
-
-      return {
-        status: message ? status : 500,
-        response: message ?? "An error occurred at server",
-      }
+      return getErrorResponse(error);
     }
 
   }
@@ -46,11 +51,7 @@ export class OrderService {
       }
     } catch (error) {
       console.log(error);
-
-      return {
-        status: 502,
-        response: "An error occurred at server",
-      }
+      return getErrorResponse(error);
     }
   }
 
@@ -64,11 +65,7 @@ export class OrderService {
       }
     } catch (error) {
       console.error(error);
-
-      return {
-        status: 502,
-        error: "Update has failed.",
-      }
+      return getErrorResponse(error);
     }
   }
 
