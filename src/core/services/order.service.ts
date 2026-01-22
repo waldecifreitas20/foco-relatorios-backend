@@ -1,8 +1,8 @@
 import { CreateOrderDto, UpdateOrderDto } from "../../dto/order.dto";
 import { CreateMinimalSpecialBudgetDto } from "../../dto/specialbudget.dto";
-import { getErrorResponse } from "../../utils/databaseErrors";
+import { getErrorResponse } from "../../utils/databaseErrors.js";
 import { OrderRepository } from "../repositories/order.repository.js";
-import { SpecialBudgetRepository } from "../repositories/specialbudget.repository";
+import { SpecialBudgetRepository } from "../repositories/specialbudget.repository.js";
 
 
 export class OrderService {

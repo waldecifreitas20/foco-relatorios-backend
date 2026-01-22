@@ -1,4 +1,4 @@
-import { AppDatabase } from "../../database/connection";
+import { AppDatabase } from "../../database/connection.js";
 import { CreateMinimalSpecialBudgetDto, CreateSpecialBudgetDto, UpdateSpecialBudgetDto } from "../../dto/specialbudget.dto";
 
 export class SpecialBudgetRepository {
