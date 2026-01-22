@@ -6,7 +6,16 @@ export class OrderRepository {
 
   async create(order: CreateOrderDto) {
     return this.table.create({
-      data: order,
+      data: {
+        client: order.client,
+        plate: order.plate,
+        date: order.date,
+        protocol: order.protocol,
+        hour: order.hour,
+        providerProtocol: order.providerProtocol,
+        service: order.service,
+        status: order.status
+      },
     });
   }
 

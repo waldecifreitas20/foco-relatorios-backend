@@ -29,7 +29,9 @@ export class SpecialBudgetRepository {
     });
   }
 
-  async getAll() {}
+  async getAll() {
+    return await this.table.findMany();
+  }
 
   async update() {}
 }
