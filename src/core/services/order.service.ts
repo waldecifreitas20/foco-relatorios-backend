@@ -1,5 +1,5 @@
 import { CreateOrderDto, UpdateOrderDto } from "../../dto/order.dto";
-import { CreateMinimalSpecialBudgetDto } from "../../dto/specialbudget.dto";
+import {  CreateSpecialBudgetDto } from "../../dto/specialbudget.dto";
 import { getErrorResponse } from "../../utils/databaseErrors.js";
 import { OrderRepository } from "../repositories/order.repository.js";
 import { SpecialBudgetRepository } from "../repositories/specialbudget.repository.js";
@@ -15,7 +15,7 @@ export class OrderService {
       const { specialBudget, ...order } = data;
 
       await this.ordersRepo.create(order);
-      await this.specialBudgetRepo.createMinimal({ ...specialBudget, protocol: order.protocol } as CreateMinimalSpecialBudgetDto);
+      await this.specialBudgetRepo.create({ ...specialBudget, protocol: order.protocol } as CreateSpecialBudgetDto);
 
       return {
         status: 200,
