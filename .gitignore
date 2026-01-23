@@ -4,5 +4,5 @@
 
 fly.toml
 *docker*
-
+.env
 .github
