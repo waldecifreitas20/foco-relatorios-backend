@@ -1,4 +1,4 @@
-import { CreateSpecialBudgetDto, UpdateSpecialBudgetDto } from "../../dto/specialbudget.dto";
+import { CreateSpecialBudgetDto, GetSpecialBudgetDto, UpdateSpecialBudgetDto } from "../../dto/specialbudget.dto";
 import { SpecialBudget } from "../../types/SpecialBudget";
 import { getErrorResponse } from "../../utils/databaseErrors.js";
 import { SpecialBudgetRepository } from "../repositories/specialbudget.repository.js";
@@ -39,7 +39,13 @@ export class SpecialBudgetService {
 
   async getAll() {
     try {
-      const specialBudgets:SpecialBudget[] = [];
+      const specialBudgets = (await this.specialBudgetRepo.getAll()).map(sb => {
+        const { fk_order_protocol, ...specialBudget } = sb;
+        return {
+          ...specialBudget,
+          order: fk_order_protocol,
+        }
+      }) as GetSpecialBudgetDto[];
 
       return {
         status: 200,

@@ -1,3 +1,5 @@
+import { Client } from "../types/Client";
+import { Service } from "../types/Service";
 import { SpecialBudgetReason, SpecialBudgetStatus } from "../types/SpecialBudget";
 
 export interface CreateSpecialBudgetDto {
@@ -5,7 +7,7 @@ export interface CreateSpecialBudgetDto {
   cost: number;
   status: SpecialBudgetStatus;
   reason: SpecialBudgetReason;
-  
+
   wheelDollies?: number;
   additionalWheels?: number;
   daysParked?: number;
@@ -32,4 +34,23 @@ export interface UpdateSpecialBudgetDto {
   status: SpecialBudgetStatus;
   protocol: string;
   reason: string;
+}
+
+
+export interface GetSpecialBudgetDto {
+  id: number,
+  status: SpecialBudgetStatus,
+  cost: number,
+  reason: SpecialBudgetReason,
+  orderProtocol: string,
+  order: {
+    protocol: string,
+    plate: string,
+    client: Client,
+    service: Service,
+    status: SpecialBudgetStatus,
+    providerProtocol: string,
+    date: string,
+    hour: string,
+  }
 }
