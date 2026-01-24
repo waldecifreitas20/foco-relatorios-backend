@@ -35,4 +35,25 @@ export class SpecialBudgetService {
     }
   }
 
+
+  async getAll() {
+    try {
+      const specialBudgets = (await this.specialBudgetRepo.getAll()).map(sb => {
+        const {fk_order_protocol, ...specialBudget} = sb;
+        return {
+          specialBudget,
+          order: fk_order_protocol,
+        }
+      });
+
+      return {
+        status: 200,
+        specialBudgets,
+      }
+    } catch (error) {
+      console.error(error);
+      return getErrorResponse(error);
+    }
+  }
+
 }

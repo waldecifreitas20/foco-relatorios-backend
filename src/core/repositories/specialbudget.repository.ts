@@ -42,4 +42,25 @@ export class SpecialBudgetRepository {
       }
     });
   }
+
+	async getAll() {
+		return await this.table.findMany({
+			omit: {
+				additionalWheels: true,
+				daysParked: true,
+				destiny: true,
+				explanation: true,
+				isGroundWithdraw: true,
+				isOffRoad: true,
+				isUprighted: true,
+				origin: true,
+				wheelDolliesQtd: true,
+				workerBase: true,
+								
+			},
+			include: {
+				fk_order_protocol: true,
+			}
+		});
+	}
 }
