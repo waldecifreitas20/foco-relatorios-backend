@@ -2,10 +2,12 @@
 CREATE TABLE "Order" (
     "protocol" TEXT NOT NULL PRIMARY KEY,
     "plate" TEXT NOT NULL,
-    "date" TEXT NOT NULL,
-    "hour" TEXT NOT NULL,
+    "client" TEXT NOT NULL,
+    "service" TEXT NOT NULL,
     "status" TEXT NOT NULL,
-    "service" TEXT NOT NULL
+    "providerProtocol" TEXT NOT NULL,
+    "date" TEXT NOT NULL,
+    "hour" TEXT
 );
 
 -- CreateTable
