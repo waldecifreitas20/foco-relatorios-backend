@@ -1,14 +1,24 @@
 import { CreateSpecialBudgetDto, GetSpecialBudgetDto, UpdateSpecialBudgetDto } from "../../dto/specialbudget.dto";
 import { getErrorResponse } from "../../utils/errors.js";
+import { OrderRepository } from "../repositories/order.repository";
 import { SpecialBudgetRepository } from "../repositories/specialbudget.repository.js";
 
 export class SpecialBudgetService {
   specialBudgetRepo = new SpecialBudgetRepository();
+  orderRepo = new OrderRepository();
 
   async create(data: CreateSpecialBudgetDto) {
     try {
+      const hasOrder = await this.orderRepo.hasOrder(data.protocol);
+  
+      if (!hasOrder) {
+        return {
+          status: 404,
+          error: "invalid order protocol"
+        };
+      }
+      
       await this.specialBudgetRepo.create(data);
-
       return {
         status: 200,
         response: "special budget created",

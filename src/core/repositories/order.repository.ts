@@ -23,7 +23,7 @@ export class OrderRepository {
       // console.error(error);
       const msg = getDatabaseErrorMessage(error.code);
       console.log(msg);
-      
+
       throw new Error(msg);
     }
 
@@ -37,6 +37,22 @@ export class OrderRepository {
       }
     });
   }
+
+
+  async hasOrder(protocol: string) {
+    try {
+      await this.table.findUniqueOrThrow({
+        where: {
+          protocol: protocol,
+        }
+      });
+      return true;
+      
+    } catch (error: any) {
+      return false;
+    }
+  }
+
 
   async update(patch: UpdateOrderDto) {
     return await this.table.update({
