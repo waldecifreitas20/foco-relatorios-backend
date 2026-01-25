@@ -8,7 +8,7 @@ export class SpecialBudgetRepository {
 	async create(specialBudget: CreateSpecialBudgetDto) {
 		return await this.table.create({
 			data: {
-				cost: specialBudget.cost,
+				cost: Number(specialBudget.cost) ?? 0,
 				status: specialBudget.status,
 				orderProtocol: specialBudget.protocol,
 				reason: specialBudget.reason,

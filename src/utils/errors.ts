@@ -1,5 +1,6 @@
 const PRISMA_ERRORS = {
   "P2002": "object already exists",
+  "P2003": "object parent does not exist",
   "P2025": "object does not exist",
 };
 
