@@ -1,26 +1,36 @@
 import { AppDatabase } from "../../database/connection.js";
 import { CreateOrderDto, UpdateOrderDto } from "../../dto/order.dto";
+import { getDatabaseErrorMessage } from "../../utils/errors.js";
 
 export class OrderRepository {
   table = AppDatabase.order;
 
   async create(order: CreateOrderDto) {
-    return this.table.create({
-      data: {
-        client: order.client,
-        plate: order.plate,
-        date: order.date,
-        protocol: order.protocol,
-        hour: order.hour,
-        providerProtocol: order.providerProtocol,
-        service: order.service,
-        status: order.status
-      },
-    });
+    try {
+      return await this.table.create({
+        data: {
+          client: order.client,
+          plate: order.plate,
+          date: order.date,
+          protocol: order.protocol,
+          hour: order.hour,
+          providerProtocol: order.providerProtocol,
+          service: order.service,
+          status: order.status
+        },
+      });
+    } catch (error: any) {
+      // console.error(error);
+      const msg = getDatabaseErrorMessage(error.code);
+      console.log(msg);
+      
+      throw new Error(msg);
+    }
+
   }
 
   async getAll() {
-    return this.table.findMany({
+    return await this.table.findMany({
       include: {
         mobilityService: true,
         specialBudgets: true,
@@ -29,7 +39,7 @@ export class OrderRepository {
   }
 
   async update(patch: UpdateOrderDto) {
-    return this.table.update({
+    return await this.table.update({
       where: {
         protocol: patch.protocol
       },

@@ -1,6 +1,6 @@
 import { CreateOrderDto, UpdateOrderDto } from "../../dto/order.dto";
-import {  CreateSpecialBudgetDto } from "../../dto/specialbudget.dto";
-import { getErrorResponse } from "../../utils/databaseErrors.js";
+import { CreateSpecialBudgetDto } from "../../dto/specialbudget.dto";
+import { getErrorResponse } from "../../utils/errors.js";
 import { OrderRepository } from "../repositories/order.repository.js";
 import { SpecialBudgetRepository } from "../repositories/specialbudget.repository.js";
 
@@ -12,20 +12,27 @@ export class OrderService {
 
   async create(data: CreateOrderDto) {
     try {
-      const { specialBudget, ...order } = data;
+      if (!data.protocol) {
+        return {
+          status: 400,
+          error: "protocol must be provided"
+        }
+      }
 
-      await this.ordersRepo.create(order);
-      await this.specialBudgetRepo.create({ ...specialBudget, protocol: order.protocol } as CreateSpecialBudgetDto);
-
+      const { protocol } = await this.ordersRepo.create(data);
       return {
         status: 200,
-        response: "order created"
-
+        message: "order created",
+        orderId: protocol,
       }
-    } catch (error: any) {
-      console.log(error);
 
-      return getErrorResponse(error);
+    } catch (error: any) {
+      console.error(error);
+
+      return {
+        status: 500,
+        error: error.message,
+      }
     }
 
   }

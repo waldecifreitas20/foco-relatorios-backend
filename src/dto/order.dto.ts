@@ -23,9 +23,12 @@ export interface CreateOrderDto {
 export interface UpdateOrderDto {
   protocol: string;
   plate?: string;
+  client?: Client;
+  service?: Service;
+  status?: ServiceStatus;
+  providerProtocol?: string;
   date?: string;
   hour?: string;
-  status?: string;
-  service?: Service;
+  mta?: MtaRequest;
 }
 

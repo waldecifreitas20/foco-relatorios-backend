@@ -1,5 +1,5 @@
 import { CreateSpecialBudgetDto, GetSpecialBudgetDto, UpdateSpecialBudgetDto } from "../../dto/specialbudget.dto";
-import { getErrorResponse } from "../../utils/databaseErrors.js";
+import { getErrorResponse } from "../../utils/errors.js";
 import { SpecialBudgetRepository } from "../repositories/specialbudget.repository.js";
 
 export class SpecialBudgetService {
