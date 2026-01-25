@@ -50,9 +50,9 @@ appRouter.patch("/orders/update", async (req, res) => {
 
 appRouter.get("/orders/all", async (req, res) => {
   try {
-    
-  const response = await orderService.getAll();
-  return res.status(response.status).json(response);
+
+    const response = await orderService.getAll();
+    return res.status(response.status).json(response);
   } catch (error) {
     console.error(error);
     return res.status(500).json({
@@ -65,24 +65,47 @@ appRouter.get("/orders/all", async (req, res) => {
 
 /* SPECIAL BUDGET */
 appRouter.post("/special-budget/create", async (req, res) => {
-  const { body } = req;
-  const response = await specialBudgetService.create(body);
+  try {
 
-  return res.status(response.status).json(response);
+    const { body } = req;
+    const response = await specialBudgetService.create(body);
+
+    return res.status(response.status).json(response);
+
+  } catch (error: any) {
+
+    console.error(error);
+    return res.status(500).json({
+      status: 500,
+      response: "Internal error",
+    });
+  }
+
 });
 
 appRouter.patch("/special-budget/update", async (req, res) => {
+try{ 
   const { body } = req;
   const response = await specialBudgetService.update(body);
 
   return res.status(response.status).json(response);
+
+} catch (error: any) {
+
+  console.error(error);
+  return res.status(500).json({
+    status: 500,
+    response: "Internal error",
+  });
+
+}
 });
 
 appRouter.get("/special-budget/all", async (req, res) => {
   try {
-    
-  const response = await specialBudgetService.getAll();
-  return res.status(response.status).json(response);
+
+    const response = await specialBudgetService.getAll();
+    return res.status(response.status).json(response);
   } catch (error) {
     console.error(error);
     return res.status(500).json({
