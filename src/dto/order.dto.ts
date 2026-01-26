@@ -14,7 +14,7 @@ export interface CreateOrderDto {
   date: string;
   hour?: string;
   mta?: MtaRequest;
-  specialBudget ? : {
+  specialBudget?: {
     cost: number;
     status: SpecialBudgetStatus;
   }
@@ -31,4 +31,28 @@ export interface UpdateOrderDto {
   hour?: string;
   mta?: MtaRequest;
 }
+
+
+export interface GetAllOrdersDto {
+  orders: Array<{
+    protocol: string,
+    plate: string,
+    client: Client,
+    service: Service,
+    status: ServiceStatus,
+    providerProtocol: string,
+    date: string,
+    hour: string,
+    mobilityService: [],
+    specialBudgets: Array<{
+      id: number,
+      status: SpecialBudgetStatus,
+      cost: number,
+      reason?: string,
+      orderProtocol: string,
+    }>
+  }>
+}
+
+
 

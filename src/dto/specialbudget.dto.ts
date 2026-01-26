@@ -13,7 +13,7 @@ export interface CreateSpecialBudgetDto {
 export interface UpdateSpecialBudgetDto {
   id: number;
   cost?: number;
-  protocol: string;
+  protocol?: string;
   status?: SpecialBudgetStatus;
   reason?: string;
 }

@@ -26,4 +26,3 @@ export type SpecialBudget = {
   reason: SpecialBudgetReason,
   explanation: string,
 }
-
