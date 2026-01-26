@@ -10,14 +10,28 @@ export class SpecialBudgetService {
   async create(data: CreateSpecialBudgetDto) {
     try {
       const hasOrder = await this.orderRepo.hasOrder(data.protocol);
-  
+
       if (!hasOrder) {
         return {
           status: 404,
           error: "invalid order protocol"
         };
       }
-      
+
+      if (!data.cost) {
+        return {
+          status: 400,
+          error: "cost must be provided"
+        }
+      }
+
+      if (isNaN(data.cost)) {
+        return {
+          status: 400,
+          error: "cost must be a number"
+        }
+      }
+
       await this.specialBudgetRepo.create(data);
       return {
         status: 200,
@@ -33,6 +47,14 @@ export class SpecialBudgetService {
 
   async update(patch: UpdateSpecialBudgetDto) {
     try {
+
+      if (isNaN(patch.cost ?? 0)) {
+        return {
+          status: 400,
+          error: "cost must be a number"
+        }
+      }
+
       await this.specialBudgetRepo.update(patch);
 
       return {
@@ -58,9 +80,7 @@ export class SpecialBudgetService {
 
       return {
         status: 200,
-        response: {
-          specialBudgets
-        },
+        specialBudgets
       }
     } catch (error) {
       console.error(error);
