@@ -1,13 +1,10 @@
 import { CreateOrderDto, UpdateOrderDto } from "../../dto/order.dto";
 import { getErrorResponse } from "../../utils/errors.js";
 import { OrderRepository } from "../repositories/order.repository.js";
-import { SpecialBudgetRepository } from "../repositories/specialbudget.repository.js";
 
 
 export class OrderService {
   ordersRepo = new OrderRepository();
-  specialBudgetRepo = new SpecialBudgetRepository();
-
 
   async create(data: CreateOrderDto) {
     try {
