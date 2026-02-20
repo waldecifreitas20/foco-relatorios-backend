@@ -1,4 +1,4 @@
-import { CreateOrderDto, UpdateOrderDto } from "../../dto/order.dto";
+import { Order } from "../../types/Order.js";
 import { getErrorResponse } from "../../utils/errors.js";
 import { OrderRepository } from "../repositories/order.repository.js";
 
@@ -6,20 +6,20 @@ import { OrderRepository } from "../repositories/order.repository.js";
 export class OrderService {
   ordersRepo = new OrderRepository();
 
-  async create(data: CreateOrderDto) {
+  async create(data: Order) {
     try {
-      if (!data.protocol) {
+      if (!data.ticket) {
         return {
           status: 400,
-          error: "protocol must be provided"
+          error: "ticket must be provided"
         }
       }
 
-      const { protocol } = await this.ordersRepo.create(data);
+      const { ticket } = await this.ordersRepo.create(data);
       return {
         status: 200,
         message: "order created",
-        orderId: protocol,
+        ticket,
       }
 
     } catch (error: any) {
@@ -49,7 +49,7 @@ export class OrderService {
   }
 
 
-  async update(patch: UpdateOrderDto) {
+  async update(patch: Order) {
     try {
       await this.ordersRepo.update(patch);
 

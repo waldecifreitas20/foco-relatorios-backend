@@ -385,8 +385,7 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 
 export const ModelName = {
   Order: 'Order',
-  SpecialBudget: 'SpecialBudget',
-  MobilityService: 'MobilityService'
+  OrderNote: 'OrderNote'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -402,7 +401,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "order" | "specialBudget" | "mobilityService"
+    modelProps: "order" | "orderNote"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -480,151 +479,77 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
-    SpecialBudget: {
-      payload: Prisma.$SpecialBudgetPayload<ExtArgs>
-      fields: Prisma.SpecialBudgetFieldRefs
+    OrderNote: {
+      payload: Prisma.$OrderNotePayload<ExtArgs>
+      fields: Prisma.OrderNoteFieldRefs
       operations: {
         findUnique: {
-          args: Prisma.SpecialBudgetFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$SpecialBudgetPayload> | null
+          args: Prisma.OrderNoteFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OrderNotePayload> | null
         }
         findUniqueOrThrow: {
-          args: Prisma.SpecialBudgetFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$SpecialBudgetPayload>
+          args: Prisma.OrderNoteFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OrderNotePayload>
         }
         findFirst: {
-          args: Prisma.SpecialBudgetFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$SpecialBudgetPayload> | null
+          args: Prisma.OrderNoteFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OrderNotePayload> | null
         }
         findFirstOrThrow: {
-          args: Prisma.SpecialBudgetFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$SpecialBudgetPayload>
+          args: Prisma.OrderNoteFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OrderNotePayload>
         }
         findMany: {
-          args: Prisma.SpecialBudgetFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$SpecialBudgetPayload>[]
+          args: Prisma.OrderNoteFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OrderNotePayload>[]
         }
         create: {
-          args: Prisma.SpecialBudgetCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$SpecialBudgetPayload>
+          args: Prisma.OrderNoteCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OrderNotePayload>
         }
         createMany: {
-          args: Prisma.SpecialBudgetCreateManyArgs<ExtArgs>
+          args: Prisma.OrderNoteCreateManyArgs<ExtArgs>
           result: BatchPayload
         }
         createManyAndReturn: {
-          args: Prisma.SpecialBudgetCreateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$SpecialBudgetPayload>[]
+          args: Prisma.OrderNoteCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OrderNotePayload>[]
         }
         delete: {
-          args: Prisma.SpecialBudgetDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$SpecialBudgetPayload>
+          args: Prisma.OrderNoteDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OrderNotePayload>
         }
         update: {
-          args: Prisma.SpecialBudgetUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$SpecialBudgetPayload>
+          args: Prisma.OrderNoteUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OrderNotePayload>
         }
         deleteMany: {
-          args: Prisma.SpecialBudgetDeleteManyArgs<ExtArgs>
+          args: Prisma.OrderNoteDeleteManyArgs<ExtArgs>
           result: BatchPayload
         }
         updateMany: {
-          args: Prisma.SpecialBudgetUpdateManyArgs<ExtArgs>
+          args: Prisma.OrderNoteUpdateManyArgs<ExtArgs>
           result: BatchPayload
         }
         updateManyAndReturn: {
-          args: Prisma.SpecialBudgetUpdateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$SpecialBudgetPayload>[]
+          args: Prisma.OrderNoteUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OrderNotePayload>[]
         }
         upsert: {
-          args: Prisma.SpecialBudgetUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$SpecialBudgetPayload>
+          args: Prisma.OrderNoteUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$OrderNotePayload>
         }
         aggregate: {
-          args: Prisma.SpecialBudgetAggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregateSpecialBudget>
+          args: Prisma.OrderNoteAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateOrderNote>
         }
         groupBy: {
-          args: Prisma.SpecialBudgetGroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.SpecialBudgetGroupByOutputType>[]
+          args: Prisma.OrderNoteGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.OrderNoteGroupByOutputType>[]
         }
         count: {
-          args: Prisma.SpecialBudgetCountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.SpecialBudgetCountAggregateOutputType> | number
-        }
-      }
-    }
-    MobilityService: {
-      payload: Prisma.$MobilityServicePayload<ExtArgs>
-      fields: Prisma.MobilityServiceFieldRefs
-      operations: {
-        findUnique: {
-          args: Prisma.MobilityServiceFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$MobilityServicePayload> | null
-        }
-        findUniqueOrThrow: {
-          args: Prisma.MobilityServiceFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$MobilityServicePayload>
-        }
-        findFirst: {
-          args: Prisma.MobilityServiceFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$MobilityServicePayload> | null
-        }
-        findFirstOrThrow: {
-          args: Prisma.MobilityServiceFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$MobilityServicePayload>
-        }
-        findMany: {
-          args: Prisma.MobilityServiceFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$MobilityServicePayload>[]
-        }
-        create: {
-          args: Prisma.MobilityServiceCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$MobilityServicePayload>
-        }
-        createMany: {
-          args: Prisma.MobilityServiceCreateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        createManyAndReturn: {
-          args: Prisma.MobilityServiceCreateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$MobilityServicePayload>[]
-        }
-        delete: {
-          args: Prisma.MobilityServiceDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$MobilityServicePayload>
-        }
-        update: {
-          args: Prisma.MobilityServiceUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$MobilityServicePayload>
-        }
-        deleteMany: {
-          args: Prisma.MobilityServiceDeleteManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateMany: {
-          args: Prisma.MobilityServiceUpdateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateManyAndReturn: {
-          args: Prisma.MobilityServiceUpdateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$MobilityServicePayload>[]
-        }
-        upsert: {
-          args: Prisma.MobilityServiceUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$MobilityServicePayload>
-        }
-        aggregate: {
-          args: Prisma.MobilityServiceAggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregateMobilityService>
-        }
-        groupBy: {
-          args: Prisma.MobilityServiceGroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.MobilityServiceGroupByOutputType>[]
-        }
-        count: {
-          args: Prisma.MobilityServiceCountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.MobilityServiceCountAggregateOutputType> | number
+          args: Prisma.OrderNoteCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.OrderNoteCountAggregateOutputType> | number
         }
       }
     }
@@ -665,54 +590,30 @@ export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof
 
 
 export const OrderScalarFieldEnum = {
-  protocol: 'protocol',
+  ticket: 'ticket',
   plate: 'plate',
   client: 'client',
   service: 'service',
   status: 'status',
-  providerProtocol: 'providerProtocol',
-  date: 'date',
-  hour: 'hour'
+  provider: 'provider',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  eta: 'eta',
+  agentName: 'agentName',
+  hasChecklist: 'hasChecklist'
 } as const
 
 export type OrderScalarFieldEnum = (typeof OrderScalarFieldEnum)[keyof typeof OrderScalarFieldEnum]
 
 
-export const SpecialBudgetScalarFieldEnum = {
-  id: 'id',
-  status: 'status',
-  cost: 'cost',
-  wheelDolliesQtd: 'wheelDolliesQtd',
-  additionalWheels: 'additionalWheels',
-  daysParked: 'daysParked',
-  isUprighted: 'isUprighted',
-  isGroundWithdraw: 'isGroundWithdraw',
-  isOffRoad: 'isOffRoad',
-  origin: 'origin',
-  destiny: 'destiny',
-  workerBase: 'workerBase',
-  reason: 'reason',
-  explanation: 'explanation',
-  orderProtocol: 'orderProtocol'
+export const OrderNoteScalarFieldEnum = {
+  orderTicket: 'orderTicket',
+  note: 'note',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 } as const
 
-export type SpecialBudgetScalarFieldEnum = (typeof SpecialBudgetScalarFieldEnum)[keyof typeof SpecialBudgetScalarFieldEnum]
-
-
-export const MobilityServiceScalarFieldEnum = {
-  id: 'id',
-  destiny: 'destiny',
-  status: 'status',
-  cost: 'cost',
-  type: 'type',
-  plate: 'plate',
-  totalDistance: 'totalDistance',
-  passengersQtd: 'passengersQtd',
-  vehicleModel: 'vehicleModel',
-  orderProtocol: 'orderProtocol'
-} as const
-
-export type MobilityServiceScalarFieldEnum = (typeof MobilityServiceScalarFieldEnum)[keyof typeof MobilityServiceScalarFieldEnum]
+export type OrderNoteScalarFieldEnum = (typeof OrderNoteScalarFieldEnum)[keyof typeof OrderNoteScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -745,6 +646,13 @@ export type StringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 
 
 
 /**
+ * Reference to a field of type 'DateTime'
+ */
+export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
+    
+
+
+/**
  * Reference to a field of type 'Int'
  */
 export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
@@ -752,16 +660,16 @@ export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'In
 
 
 /**
- * Reference to a field of type 'Float'
+ * Reference to a field of type 'Boolean'
  */
-export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
+export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
     
 
 
 /**
- * Reference to a field of type 'Boolean'
+ * Reference to a field of type 'Float'
  */
-export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
     
 
 /**
@@ -860,8 +768,7 @@ export type PrismaClientOptions = ({
 }
 export type GlobalOmitConfig = {
   order?: Prisma.OrderOmit
-  specialBudget?: Prisma.SpecialBudgetOmit
-  mobilityService?: Prisma.MobilityServiceOmit
+  orderNote?: Prisma.OrderNoteOmit
 }
 
 /* Types for Logging */

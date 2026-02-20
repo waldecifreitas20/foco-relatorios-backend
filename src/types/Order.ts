@@ -1,13 +1,20 @@
-import { type MtaRequest } from "./MtaRequest";
+import type { Client } from "./Client";
+import type { Provider } from "./Provider";
 import { type Service } from "./Service";
 import { type ServiceStatus } from "./ServiceStatus";
-import type { SpecialBudget } from "./SpecialBudget";
 
 export type Order = {
   plate: string;
-  protocol: string;
+  ticket: string;
+  client: Client;
   service: Service;
   status: ServiceStatus;
-  date: string,
-  hour: string,
+  provider: Provider;
+  createdAt?: Date;
+  updatedAt?: Date;
+  eta?: number;
+  agentName?: string;
+  notes?: string[];
+  hasChecklist?: boolean;
 };
+

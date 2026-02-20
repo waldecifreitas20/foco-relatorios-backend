@@ -20,7 +20,7 @@ const config: runtime.GetPrismaClientConfig = {
   "clientVersion": "7.2.0",
   "engineVersion": "0c8ef2ce45c83248ab3df073180d5eda9e8be7a3",
   "activeProvider": "sqlite",
-  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docspris.ly/d/prisma-schema\n\ngenerator client {\n  provider = \"prisma-client\"\n  output   = \"../src/generated/prisma\"\n}\n\ndatasource db {\n  provider = \"sqlite\"\n}\n\nmodel Order {\n  protocol         String  @id\n  plate            String\n  client           String\n  service          String\n  status           String\n  providerProtocol String\n  date             String\n  hour             String?\n\n  specialBudgets  SpecialBudget[]\n  mobilityService MobilityService[]\n}\n\nmodel SpecialBudget {\n  id               Int      @id @default(autoincrement())\n  status           String\n  cost             Float\n  wheelDolliesQtd  Int?\n  additionalWheels Int?\n  daysParked       Int?\n  isUprighted      Boolean?\n  isGroundWithdraw Boolean?\n  isOffRoad        Boolean?\n  origin           String?\n  destiny          String?\n  workerBase       String?\n  reason           String?\n  explanation      String?\n\n  orderProtocol     String\n  fk_order_protocol Order  @relation(references: [protocol], fields: [orderProtocol])\n}\n\nmodel MobilityService {\n  id            Int    @id @default(autoincrement())\n  destiny       String\n  status        String\n  cost          Float\n  type          String\n  plate         String\n  totalDistance Int\n  passengersQtd Int\n  vehicleModel  String\n\n  orderProtocol     String\n  fk_order_protocol Order  @relation(references: [protocol], fields: [orderProtocol])\n}\n",
+  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docspris.ly/d/prisma-schema\n\ngenerator client {\n  provider = \"prisma-client\"\n  output   = \"../src/generated/prisma\"\n}\n\ndatasource db {\n  provider = \"sqlite\"\n}\n\nmodel Order {\n  ticket       String   @id\n  plate        String\n  client       String\n  service      String\n  status       String\n  provider     String\n  createdAt    DateTime @default(now())\n  updatedAt    DateTime @default(now())\n  eta          Int?\n  agentName    String?\n  hasChecklist Boolean? @default(false)\n\n  notes OrderNote[]\n}\n\nmodel OrderNote {\n  orderTicket String   @id\n  note        String\n  createdAt   DateTime @default(now())\n  updatedAt   DateTime @default(now())\n\n  order Order @relation(fields: [orderTicket], references: [ticket])\n}\n",
   "runtimeDataModel": {
     "models": {},
     "enums": {},
@@ -28,7 +28,7 @@ const config: runtime.GetPrismaClientConfig = {
   }
 }
 
-config.runtimeDataModel = JSON.parse("{\"models\":{\"Order\":{\"fields\":[{\"name\":\"protocol\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"plate\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"client\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"service\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"status\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"providerProtocol\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"date\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"hour\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"specialBudgets\",\"kind\":\"object\",\"type\":\"SpecialBudget\",\"relationName\":\"OrderToSpecialBudget\"},{\"name\":\"mobilityService\",\"kind\":\"object\",\"type\":\"MobilityService\",\"relationName\":\"MobilityServiceToOrder\"}],\"dbName\":null},\"SpecialBudget\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"status\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"cost\",\"kind\":\"scalar\",\"type\":\"Float\"},{\"name\":\"wheelDolliesQtd\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"additionalWheels\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"daysParked\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"isUprighted\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"isGroundWithdraw\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"isOffRoad\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"origin\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"destiny\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"workerBase\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"reason\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"explanation\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"orderProtocol\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"fk_order_protocol\",\"kind\":\"object\",\"type\":\"Order\",\"relationName\":\"OrderToSpecialBudget\"}],\"dbName\":null},\"MobilityService\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"destiny\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"status\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"cost\",\"kind\":\"scalar\",\"type\":\"Float\"},{\"name\":\"type\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"plate\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"totalDistance\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"passengersQtd\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"vehicleModel\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"orderProtocol\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"fk_order_protocol\",\"kind\":\"object\",\"type\":\"Order\",\"relationName\":\"MobilityServiceToOrder\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
+config.runtimeDataModel = JSON.parse("{\"models\":{\"Order\":{\"fields\":[{\"name\":\"ticket\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"plate\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"client\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"service\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"status\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"provider\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"eta\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"agentName\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"hasChecklist\",\"kind\":\"scalar\",\"type\":\"Boolean\"},{\"name\":\"notes\",\"kind\":\"object\",\"type\":\"OrderNote\",\"relationName\":\"OrderToOrderNote\"}],\"dbName\":null},\"OrderNote\":{\"fields\":[{\"name\":\"orderTicket\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"note\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updatedAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"order\",\"kind\":\"object\",\"type\":\"Order\",\"relationName\":\"OrderToOrderNote\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
 
 async function decodeBase64AsWasm(wasmBase64: string): Promise<WebAssembly.Module> {
   const { Buffer } = await import('node:buffer')
@@ -185,24 +185,14 @@ export interface PrismaClient<
   get order(): Prisma.OrderDelegate<ExtArgs, { omit: OmitOpts }>;
 
   /**
-   * `prisma.specialBudget`: Exposes CRUD operations for the **SpecialBudget** model.
+   * `prisma.orderNote`: Exposes CRUD operations for the **OrderNote** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more SpecialBudgets
-    * const specialBudgets = await prisma.specialBudget.findMany()
+    * // Fetch zero or more OrderNotes
+    * const orderNotes = await prisma.orderNote.findMany()
     * ```
     */
-  get specialBudget(): Prisma.SpecialBudgetDelegate<ExtArgs, { omit: OmitOpts }>;
-
-  /**
-   * `prisma.mobilityService`: Exposes CRUD operations for the **MobilityService** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more MobilityServices
-    * const mobilityServices = await prisma.mobilityService.findMany()
-    * ```
-    */
-  get mobilityService(): Prisma.MobilityServiceDelegate<ExtArgs, { omit: OmitOpts }>;
+  get orderNote(): Prisma.OrderNoteDelegate<ExtArgs, { omit: OmitOpts }>;
 }
 
 export function getPrismaClientClass(): PrismaClientConstructor {

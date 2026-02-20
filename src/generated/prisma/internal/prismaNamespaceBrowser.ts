@@ -52,8 +52,7 @@ export const AnyNull = runtime.AnyNull
 
 export const ModelName = {
   Order: 'Order',
-  SpecialBudget: 'SpecialBudget',
-  MobilityService: 'MobilityService'
+  OrderNote: 'OrderNote'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -70,54 +69,30 @@ export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof
 
 
 export const OrderScalarFieldEnum = {
-  protocol: 'protocol',
+  ticket: 'ticket',
   plate: 'plate',
   client: 'client',
   service: 'service',
   status: 'status',
-  providerProtocol: 'providerProtocol',
-  date: 'date',
-  hour: 'hour'
+  provider: 'provider',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  eta: 'eta',
+  agentName: 'agentName',
+  hasChecklist: 'hasChecklist'
 } as const
 
 export type OrderScalarFieldEnum = (typeof OrderScalarFieldEnum)[keyof typeof OrderScalarFieldEnum]
 
 
-export const SpecialBudgetScalarFieldEnum = {
-  id: 'id',
-  status: 'status',
-  cost: 'cost',
-  wheelDolliesQtd: 'wheelDolliesQtd',
-  additionalWheels: 'additionalWheels',
-  daysParked: 'daysParked',
-  isUprighted: 'isUprighted',
-  isGroundWithdraw: 'isGroundWithdraw',
-  isOffRoad: 'isOffRoad',
-  origin: 'origin',
-  destiny: 'destiny',
-  workerBase: 'workerBase',
-  reason: 'reason',
-  explanation: 'explanation',
-  orderProtocol: 'orderProtocol'
+export const OrderNoteScalarFieldEnum = {
+  orderTicket: 'orderTicket',
+  note: 'note',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 } as const
 
-export type SpecialBudgetScalarFieldEnum = (typeof SpecialBudgetScalarFieldEnum)[keyof typeof SpecialBudgetScalarFieldEnum]
-
-
-export const MobilityServiceScalarFieldEnum = {
-  id: 'id',
-  destiny: 'destiny',
-  status: 'status',
-  cost: 'cost',
-  type: 'type',
-  plate: 'plate',
-  totalDistance: 'totalDistance',
-  passengersQtd: 'passengersQtd',
-  vehicleModel: 'vehicleModel',
-  orderProtocol: 'orderProtocol'
-} as const
-
-export type MobilityServiceScalarFieldEnum = (typeof MobilityServiceScalarFieldEnum)[keyof typeof MobilityServiceScalarFieldEnum]
+export type OrderNoteScalarFieldEnum = (typeof OrderNoteScalarFieldEnum)[keyof typeof OrderNoteScalarFieldEnum]
 
 
 export const SortOrder = {

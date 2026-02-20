@@ -20,76 +20,112 @@ export type OrderModel = runtime.Types.Result.DefaultSelection<Prisma.$OrderPayl
 
 export type AggregateOrder = {
   _count: OrderCountAggregateOutputType | null
+  _avg: OrderAvgAggregateOutputType | null
+  _sum: OrderSumAggregateOutputType | null
   _min: OrderMinAggregateOutputType | null
   _max: OrderMaxAggregateOutputType | null
 }
 
+export type OrderAvgAggregateOutputType = {
+  eta: number | null
+}
+
+export type OrderSumAggregateOutputType = {
+  eta: number | null
+}
+
 export type OrderMinAggregateOutputType = {
-  protocol: string | null
+  ticket: string | null
   plate: string | null
   client: string | null
   service: string | null
   status: string | null
-  providerProtocol: string | null
-  date: string | null
-  hour: string | null
+  provider: string | null
+  createdAt: Date | null
+  updatedAt: Date | null
+  eta: number | null
+  agentName: string | null
+  hasChecklist: boolean | null
 }
 
 export type OrderMaxAggregateOutputType = {
-  protocol: string | null
+  ticket: string | null
   plate: string | null
   client: string | null
   service: string | null
   status: string | null
-  providerProtocol: string | null
-  date: string | null
-  hour: string | null
+  provider: string | null
+  createdAt: Date | null
+  updatedAt: Date | null
+  eta: number | null
+  agentName: string | null
+  hasChecklist: boolean | null
 }
 
 export type OrderCountAggregateOutputType = {
-  protocol: number
+  ticket: number
   plate: number
   client: number
   service: number
   status: number
-  providerProtocol: number
-  date: number
-  hour: number
+  provider: number
+  createdAt: number
+  updatedAt: number
+  eta: number
+  agentName: number
+  hasChecklist: number
   _all: number
 }
 
 
+export type OrderAvgAggregateInputType = {
+  eta?: true
+}
+
+export type OrderSumAggregateInputType = {
+  eta?: true
+}
+
 export type OrderMinAggregateInputType = {
-  protocol?: true
+  ticket?: true
   plate?: true
   client?: true
   service?: true
   status?: true
-  providerProtocol?: true
-  date?: true
-  hour?: true
+  provider?: true
+  createdAt?: true
+  updatedAt?: true
+  eta?: true
+  agentName?: true
+  hasChecklist?: true
 }
 
 export type OrderMaxAggregateInputType = {
-  protocol?: true
+  ticket?: true
   plate?: true
   client?: true
   service?: true
   status?: true
-  providerProtocol?: true
-  date?: true
-  hour?: true
+  provider?: true
+  createdAt?: true
+  updatedAt?: true
+  eta?: true
+  agentName?: true
+  hasChecklist?: true
 }
 
 export type OrderCountAggregateInputType = {
-  protocol?: true
+  ticket?: true
   plate?: true
   client?: true
   service?: true
   status?: true
-  providerProtocol?: true
-  date?: true
-  hour?: true
+  provider?: true
+  createdAt?: true
+  updatedAt?: true
+  eta?: true
+  agentName?: true
+  hasChecklist?: true
   _all?: true
 }
 
@@ -131,6 +167,18 @@ export type OrderAggregateArgs<ExtArgs extends runtime.Types.Extensions.Internal
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
    * 
+   * Select which fields to average
+  **/
+  _avg?: OrderAvgAggregateInputType
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+   * 
+   * Select which fields to sum
+  **/
+  _sum?: OrderSumAggregateInputType
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+   * 
    * Select which fields to find the minimum value
   **/
   _min?: OrderMinAggregateInputType
@@ -161,20 +209,27 @@ export type OrderGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalAr
   take?: number
   skip?: number
   _count?: OrderCountAggregateInputType | true
+  _avg?: OrderAvgAggregateInputType
+  _sum?: OrderSumAggregateInputType
   _min?: OrderMinAggregateInputType
   _max?: OrderMaxAggregateInputType
 }
 
 export type OrderGroupByOutputType = {
-  protocol: string
+  ticket: string
   plate: string
   client: string
   service: string
   status: string
-  providerProtocol: string
-  date: string
-  hour: string | null
+  provider: string
+  createdAt: Date
+  updatedAt: Date
+  eta: number | null
+  agentName: string | null
+  hasChecklist: boolean | null
   _count: OrderCountAggregateOutputType | null
+  _avg: OrderAvgAggregateOutputType | null
+  _sum: OrderSumAggregateOutputType | null
   _min: OrderMinAggregateOutputType | null
   _max: OrderMaxAggregateOutputType | null
 }
@@ -198,33 +253,37 @@ export type OrderWhereInput = {
   AND?: Prisma.OrderWhereInput | Prisma.OrderWhereInput[]
   OR?: Prisma.OrderWhereInput[]
   NOT?: Prisma.OrderWhereInput | Prisma.OrderWhereInput[]
-  protocol?: Prisma.StringFilter<"Order"> | string
+  ticket?: Prisma.StringFilter<"Order"> | string
   plate?: Prisma.StringFilter<"Order"> | string
   client?: Prisma.StringFilter<"Order"> | string
   service?: Prisma.StringFilter<"Order"> | string
   status?: Prisma.StringFilter<"Order"> | string
-  providerProtocol?: Prisma.StringFilter<"Order"> | string
-  date?: Prisma.StringFilter<"Order"> | string
-  hour?: Prisma.StringNullableFilter<"Order"> | string | null
-  specialBudgets?: Prisma.SpecialBudgetListRelationFilter
-  mobilityService?: Prisma.MobilityServiceListRelationFilter
+  provider?: Prisma.StringFilter<"Order"> | string
+  createdAt?: Prisma.DateTimeFilter<"Order"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"Order"> | Date | string
+  eta?: Prisma.IntNullableFilter<"Order"> | number | null
+  agentName?: Prisma.StringNullableFilter<"Order"> | string | null
+  hasChecklist?: Prisma.BoolNullableFilter<"Order"> | boolean | null
+  notes?: Prisma.OrderNoteListRelationFilter
 }
 
 export type OrderOrderByWithRelationInput = {
-  protocol?: Prisma.SortOrder
+  ticket?: Prisma.SortOrder
   plate?: Prisma.SortOrder
   client?: Prisma.SortOrder
   service?: Prisma.SortOrder
   status?: Prisma.SortOrder
-  providerProtocol?: Prisma.SortOrder
-  date?: Prisma.SortOrder
-  hour?: Prisma.SortOrderInput | Prisma.SortOrder
-  specialBudgets?: Prisma.SpecialBudgetOrderByRelationAggregateInput
-  mobilityService?: Prisma.MobilityServiceOrderByRelationAggregateInput
+  provider?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
+  eta?: Prisma.SortOrderInput | Prisma.SortOrder
+  agentName?: Prisma.SortOrderInput | Prisma.SortOrder
+  hasChecklist?: Prisma.SortOrderInput | Prisma.SortOrder
+  notes?: Prisma.OrderNoteOrderByRelationAggregateInput
 }
 
 export type OrderWhereUniqueInput = Prisma.AtLeast<{
-  protocol?: string
+  ticket?: string
   AND?: Prisma.OrderWhereInput | Prisma.OrderWhereInput[]
   OR?: Prisma.OrderWhereInput[]
   NOT?: Prisma.OrderWhereInput | Prisma.OrderWhereInput[]
@@ -232,157 +291,201 @@ export type OrderWhereUniqueInput = Prisma.AtLeast<{
   client?: Prisma.StringFilter<"Order"> | string
   service?: Prisma.StringFilter<"Order"> | string
   status?: Prisma.StringFilter<"Order"> | string
-  providerProtocol?: Prisma.StringFilter<"Order"> | string
-  date?: Prisma.StringFilter<"Order"> | string
-  hour?: Prisma.StringNullableFilter<"Order"> | string | null
-  specialBudgets?: Prisma.SpecialBudgetListRelationFilter
-  mobilityService?: Prisma.MobilityServiceListRelationFilter
-}, "protocol">
+  provider?: Prisma.StringFilter<"Order"> | string
+  createdAt?: Prisma.DateTimeFilter<"Order"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"Order"> | Date | string
+  eta?: Prisma.IntNullableFilter<"Order"> | number | null
+  agentName?: Prisma.StringNullableFilter<"Order"> | string | null
+  hasChecklist?: Prisma.BoolNullableFilter<"Order"> | boolean | null
+  notes?: Prisma.OrderNoteListRelationFilter
+}, "ticket">
 
 export type OrderOrderByWithAggregationInput = {
-  protocol?: Prisma.SortOrder
+  ticket?: Prisma.SortOrder
   plate?: Prisma.SortOrder
   client?: Prisma.SortOrder
   service?: Prisma.SortOrder
   status?: Prisma.SortOrder
-  providerProtocol?: Prisma.SortOrder
-  date?: Prisma.SortOrder
-  hour?: Prisma.SortOrderInput | Prisma.SortOrder
+  provider?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
+  eta?: Prisma.SortOrderInput | Prisma.SortOrder
+  agentName?: Prisma.SortOrderInput | Prisma.SortOrder
+  hasChecklist?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.OrderCountOrderByAggregateInput
+  _avg?: Prisma.OrderAvgOrderByAggregateInput
   _max?: Prisma.OrderMaxOrderByAggregateInput
   _min?: Prisma.OrderMinOrderByAggregateInput
+  _sum?: Prisma.OrderSumOrderByAggregateInput
 }
 
 export type OrderScalarWhereWithAggregatesInput = {
   AND?: Prisma.OrderScalarWhereWithAggregatesInput | Prisma.OrderScalarWhereWithAggregatesInput[]
   OR?: Prisma.OrderScalarWhereWithAggregatesInput[]
   NOT?: Prisma.OrderScalarWhereWithAggregatesInput | Prisma.OrderScalarWhereWithAggregatesInput[]
-  protocol?: Prisma.StringWithAggregatesFilter<"Order"> | string
+  ticket?: Prisma.StringWithAggregatesFilter<"Order"> | string
   plate?: Prisma.StringWithAggregatesFilter<"Order"> | string
   client?: Prisma.StringWithAggregatesFilter<"Order"> | string
   service?: Prisma.StringWithAggregatesFilter<"Order"> | string
   status?: Prisma.StringWithAggregatesFilter<"Order"> | string
-  providerProtocol?: Prisma.StringWithAggregatesFilter<"Order"> | string
-  date?: Prisma.StringWithAggregatesFilter<"Order"> | string
-  hour?: Prisma.StringNullableWithAggregatesFilter<"Order"> | string | null
+  provider?: Prisma.StringWithAggregatesFilter<"Order"> | string
+  createdAt?: Prisma.DateTimeWithAggregatesFilter<"Order"> | Date | string
+  updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Order"> | Date | string
+  eta?: Prisma.IntNullableWithAggregatesFilter<"Order"> | number | null
+  agentName?: Prisma.StringNullableWithAggregatesFilter<"Order"> | string | null
+  hasChecklist?: Prisma.BoolNullableWithAggregatesFilter<"Order"> | boolean | null
 }
 
 export type OrderCreateInput = {
-  protocol: string
+  ticket: string
   plate: string
   client: string
   service: string
   status: string
-  providerProtocol: string
-  date: string
-  hour?: string | null
-  specialBudgets?: Prisma.SpecialBudgetCreateNestedManyWithoutFk_order_protocolInput
-  mobilityService?: Prisma.MobilityServiceCreateNestedManyWithoutFk_order_protocolInput
+  provider: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  eta?: number | null
+  agentName?: string | null
+  hasChecklist?: boolean | null
+  notes?: Prisma.OrderNoteCreateNestedManyWithoutOrderInput
 }
 
 export type OrderUncheckedCreateInput = {
-  protocol: string
+  ticket: string
   plate: string
   client: string
   service: string
   status: string
-  providerProtocol: string
-  date: string
-  hour?: string | null
-  specialBudgets?: Prisma.SpecialBudgetUncheckedCreateNestedManyWithoutFk_order_protocolInput
-  mobilityService?: Prisma.MobilityServiceUncheckedCreateNestedManyWithoutFk_order_protocolInput
+  provider: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  eta?: number | null
+  agentName?: string | null
+  hasChecklist?: boolean | null
+  notes?: Prisma.OrderNoteUncheckedCreateNestedManyWithoutOrderInput
 }
 
 export type OrderUpdateInput = {
-  protocol?: Prisma.StringFieldUpdateOperationsInput | string
+  ticket?: Prisma.StringFieldUpdateOperationsInput | string
   plate?: Prisma.StringFieldUpdateOperationsInput | string
   client?: Prisma.StringFieldUpdateOperationsInput | string
   service?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
-  providerProtocol?: Prisma.StringFieldUpdateOperationsInput | string
-  date?: Prisma.StringFieldUpdateOperationsInput | string
-  hour?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  specialBudgets?: Prisma.SpecialBudgetUpdateManyWithoutFk_order_protocolNestedInput
-  mobilityService?: Prisma.MobilityServiceUpdateManyWithoutFk_order_protocolNestedInput
+  provider?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  eta?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  agentName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  hasChecklist?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  notes?: Prisma.OrderNoteUpdateManyWithoutOrderNestedInput
 }
 
 export type OrderUncheckedUpdateInput = {
-  protocol?: Prisma.StringFieldUpdateOperationsInput | string
+  ticket?: Prisma.StringFieldUpdateOperationsInput | string
   plate?: Prisma.StringFieldUpdateOperationsInput | string
   client?: Prisma.StringFieldUpdateOperationsInput | string
   service?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
-  providerProtocol?: Prisma.StringFieldUpdateOperationsInput | string
-  date?: Prisma.StringFieldUpdateOperationsInput | string
-  hour?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  specialBudgets?: Prisma.SpecialBudgetUncheckedUpdateManyWithoutFk_order_protocolNestedInput
-  mobilityService?: Prisma.MobilityServiceUncheckedUpdateManyWithoutFk_order_protocolNestedInput
+  provider?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  eta?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  agentName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  hasChecklist?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  notes?: Prisma.OrderNoteUncheckedUpdateManyWithoutOrderNestedInput
 }
 
 export type OrderCreateManyInput = {
-  protocol: string
+  ticket: string
   plate: string
   client: string
   service: string
   status: string
-  providerProtocol: string
-  date: string
-  hour?: string | null
+  provider: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  eta?: number | null
+  agentName?: string | null
+  hasChecklist?: boolean | null
 }
 
 export type OrderUpdateManyMutationInput = {
-  protocol?: Prisma.StringFieldUpdateOperationsInput | string
+  ticket?: Prisma.StringFieldUpdateOperationsInput | string
   plate?: Prisma.StringFieldUpdateOperationsInput | string
   client?: Prisma.StringFieldUpdateOperationsInput | string
   service?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
-  providerProtocol?: Prisma.StringFieldUpdateOperationsInput | string
-  date?: Prisma.StringFieldUpdateOperationsInput | string
-  hour?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  provider?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  eta?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  agentName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  hasChecklist?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
 }
 
 export type OrderUncheckedUpdateManyInput = {
-  protocol?: Prisma.StringFieldUpdateOperationsInput | string
+  ticket?: Prisma.StringFieldUpdateOperationsInput | string
   plate?: Prisma.StringFieldUpdateOperationsInput | string
   client?: Prisma.StringFieldUpdateOperationsInput | string
   service?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
-  providerProtocol?: Prisma.StringFieldUpdateOperationsInput | string
-  date?: Prisma.StringFieldUpdateOperationsInput | string
-  hour?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  provider?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  eta?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  agentName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  hasChecklist?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
 }
 
 export type OrderCountOrderByAggregateInput = {
-  protocol?: Prisma.SortOrder
+  ticket?: Prisma.SortOrder
   plate?: Prisma.SortOrder
   client?: Prisma.SortOrder
   service?: Prisma.SortOrder
   status?: Prisma.SortOrder
-  providerProtocol?: Prisma.SortOrder
-  date?: Prisma.SortOrder
-  hour?: Prisma.SortOrder
+  provider?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
+  eta?: Prisma.SortOrder
+  agentName?: Prisma.SortOrder
+  hasChecklist?: Prisma.SortOrder
+}
+
+export type OrderAvgOrderByAggregateInput = {
+  eta?: Prisma.SortOrder
 }
 
 export type OrderMaxOrderByAggregateInput = {
-  protocol?: Prisma.SortOrder
+  ticket?: Prisma.SortOrder
   plate?: Prisma.SortOrder
   client?: Prisma.SortOrder
   service?: Prisma.SortOrder
   status?: Prisma.SortOrder
-  providerProtocol?: Prisma.SortOrder
-  date?: Prisma.SortOrder
-  hour?: Prisma.SortOrder
+  provider?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
+  eta?: Prisma.SortOrder
+  agentName?: Prisma.SortOrder
+  hasChecklist?: Prisma.SortOrder
 }
 
 export type OrderMinOrderByAggregateInput = {
-  protocol?: Prisma.SortOrder
+  ticket?: Prisma.SortOrder
   plate?: Prisma.SortOrder
   client?: Prisma.SortOrder
   service?: Prisma.SortOrder
   status?: Prisma.SortOrder
-  providerProtocol?: Prisma.SortOrder
-  date?: Prisma.SortOrder
-  hour?: Prisma.SortOrder
+  provider?: Prisma.SortOrder
+  createdAt?: Prisma.SortOrder
+  updatedAt?: Prisma.SortOrder
+  eta?: Prisma.SortOrder
+  agentName?: Prisma.SortOrder
+  hasChecklist?: Prisma.SortOrder
+}
+
+export type OrderSumOrderByAggregateInput = {
+  eta?: Prisma.SortOrder
 }
 
 export type OrderScalarRelationFilter = {
@@ -394,164 +497,110 @@ export type StringFieldUpdateOperationsInput = {
   set?: string
 }
 
+export type DateTimeFieldUpdateOperationsInput = {
+  set?: Date | string
+}
+
+export type NullableIntFieldUpdateOperationsInput = {
+  set?: number | null
+  increment?: number
+  decrement?: number
+  multiply?: number
+  divide?: number
+}
+
 export type NullableStringFieldUpdateOperationsInput = {
   set?: string | null
 }
 
-export type OrderCreateNestedOneWithoutSpecialBudgetsInput = {
-  create?: Prisma.XOR<Prisma.OrderCreateWithoutSpecialBudgetsInput, Prisma.OrderUncheckedCreateWithoutSpecialBudgetsInput>
-  connectOrCreate?: Prisma.OrderCreateOrConnectWithoutSpecialBudgetsInput
+export type NullableBoolFieldUpdateOperationsInput = {
+  set?: boolean | null
+}
+
+export type OrderCreateNestedOneWithoutNotesInput = {
+  create?: Prisma.XOR<Prisma.OrderCreateWithoutNotesInput, Prisma.OrderUncheckedCreateWithoutNotesInput>
+  connectOrCreate?: Prisma.OrderCreateOrConnectWithoutNotesInput
   connect?: Prisma.OrderWhereUniqueInput
 }
 
-export type OrderUpdateOneRequiredWithoutSpecialBudgetsNestedInput = {
-  create?: Prisma.XOR<Prisma.OrderCreateWithoutSpecialBudgetsInput, Prisma.OrderUncheckedCreateWithoutSpecialBudgetsInput>
-  connectOrCreate?: Prisma.OrderCreateOrConnectWithoutSpecialBudgetsInput
-  upsert?: Prisma.OrderUpsertWithoutSpecialBudgetsInput
+export type OrderUpdateOneRequiredWithoutNotesNestedInput = {
+  create?: Prisma.XOR<Prisma.OrderCreateWithoutNotesInput, Prisma.OrderUncheckedCreateWithoutNotesInput>
+  connectOrCreate?: Prisma.OrderCreateOrConnectWithoutNotesInput
+  upsert?: Prisma.OrderUpsertWithoutNotesInput
   connect?: Prisma.OrderWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.OrderUpdateToOneWithWhereWithoutSpecialBudgetsInput, Prisma.OrderUpdateWithoutSpecialBudgetsInput>, Prisma.OrderUncheckedUpdateWithoutSpecialBudgetsInput>
+  update?: Prisma.XOR<Prisma.XOR<Prisma.OrderUpdateToOneWithWhereWithoutNotesInput, Prisma.OrderUpdateWithoutNotesInput>, Prisma.OrderUncheckedUpdateWithoutNotesInput>
 }
 
-export type OrderCreateNestedOneWithoutMobilityServiceInput = {
-  create?: Prisma.XOR<Prisma.OrderCreateWithoutMobilityServiceInput, Prisma.OrderUncheckedCreateWithoutMobilityServiceInput>
-  connectOrCreate?: Prisma.OrderCreateOrConnectWithoutMobilityServiceInput
-  connect?: Prisma.OrderWhereUniqueInput
-}
-
-export type OrderUpdateOneRequiredWithoutMobilityServiceNestedInput = {
-  create?: Prisma.XOR<Prisma.OrderCreateWithoutMobilityServiceInput, Prisma.OrderUncheckedCreateWithoutMobilityServiceInput>
-  connectOrCreate?: Prisma.OrderCreateOrConnectWithoutMobilityServiceInput
-  upsert?: Prisma.OrderUpsertWithoutMobilityServiceInput
-  connect?: Prisma.OrderWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.OrderUpdateToOneWithWhereWithoutMobilityServiceInput, Prisma.OrderUpdateWithoutMobilityServiceInput>, Prisma.OrderUncheckedUpdateWithoutMobilityServiceInput>
-}
-
-export type OrderCreateWithoutSpecialBudgetsInput = {
-  protocol: string
+export type OrderCreateWithoutNotesInput = {
+  ticket: string
   plate: string
   client: string
   service: string
   status: string
-  providerProtocol: string
-  date: string
-  hour?: string | null
-  mobilityService?: Prisma.MobilityServiceCreateNestedManyWithoutFk_order_protocolInput
+  provider: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  eta?: number | null
+  agentName?: string | null
+  hasChecklist?: boolean | null
 }
 
-export type OrderUncheckedCreateWithoutSpecialBudgetsInput = {
-  protocol: string
+export type OrderUncheckedCreateWithoutNotesInput = {
+  ticket: string
   plate: string
   client: string
   service: string
   status: string
-  providerProtocol: string
-  date: string
-  hour?: string | null
-  mobilityService?: Prisma.MobilityServiceUncheckedCreateNestedManyWithoutFk_order_protocolInput
+  provider: string
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  eta?: number | null
+  agentName?: string | null
+  hasChecklist?: boolean | null
 }
 
-export type OrderCreateOrConnectWithoutSpecialBudgetsInput = {
+export type OrderCreateOrConnectWithoutNotesInput = {
   where: Prisma.OrderWhereUniqueInput
-  create: Prisma.XOR<Prisma.OrderCreateWithoutSpecialBudgetsInput, Prisma.OrderUncheckedCreateWithoutSpecialBudgetsInput>
+  create: Prisma.XOR<Prisma.OrderCreateWithoutNotesInput, Prisma.OrderUncheckedCreateWithoutNotesInput>
 }
 
-export type OrderUpsertWithoutSpecialBudgetsInput = {
-  update: Prisma.XOR<Prisma.OrderUpdateWithoutSpecialBudgetsInput, Prisma.OrderUncheckedUpdateWithoutSpecialBudgetsInput>
-  create: Prisma.XOR<Prisma.OrderCreateWithoutSpecialBudgetsInput, Prisma.OrderUncheckedCreateWithoutSpecialBudgetsInput>
+export type OrderUpsertWithoutNotesInput = {
+  update: Prisma.XOR<Prisma.OrderUpdateWithoutNotesInput, Prisma.OrderUncheckedUpdateWithoutNotesInput>
+  create: Prisma.XOR<Prisma.OrderCreateWithoutNotesInput, Prisma.OrderUncheckedCreateWithoutNotesInput>
   where?: Prisma.OrderWhereInput
 }
 
-export type OrderUpdateToOneWithWhereWithoutSpecialBudgetsInput = {
+export type OrderUpdateToOneWithWhereWithoutNotesInput = {
   where?: Prisma.OrderWhereInput
-  data: Prisma.XOR<Prisma.OrderUpdateWithoutSpecialBudgetsInput, Prisma.OrderUncheckedUpdateWithoutSpecialBudgetsInput>
+  data: Prisma.XOR<Prisma.OrderUpdateWithoutNotesInput, Prisma.OrderUncheckedUpdateWithoutNotesInput>
 }
 
-export type OrderUpdateWithoutSpecialBudgetsInput = {
-  protocol?: Prisma.StringFieldUpdateOperationsInput | string
+export type OrderUpdateWithoutNotesInput = {
+  ticket?: Prisma.StringFieldUpdateOperationsInput | string
   plate?: Prisma.StringFieldUpdateOperationsInput | string
   client?: Prisma.StringFieldUpdateOperationsInput | string
   service?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
-  providerProtocol?: Prisma.StringFieldUpdateOperationsInput | string
-  date?: Prisma.StringFieldUpdateOperationsInput | string
-  hour?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  mobilityService?: Prisma.MobilityServiceUpdateManyWithoutFk_order_protocolNestedInput
+  provider?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  eta?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  agentName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  hasChecklist?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
 }
 
-export type OrderUncheckedUpdateWithoutSpecialBudgetsInput = {
-  protocol?: Prisma.StringFieldUpdateOperationsInput | string
+export type OrderUncheckedUpdateWithoutNotesInput = {
+  ticket?: Prisma.StringFieldUpdateOperationsInput | string
   plate?: Prisma.StringFieldUpdateOperationsInput | string
   client?: Prisma.StringFieldUpdateOperationsInput | string
   service?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
-  providerProtocol?: Prisma.StringFieldUpdateOperationsInput | string
-  date?: Prisma.StringFieldUpdateOperationsInput | string
-  hour?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  mobilityService?: Prisma.MobilityServiceUncheckedUpdateManyWithoutFk_order_protocolNestedInput
-}
-
-export type OrderCreateWithoutMobilityServiceInput = {
-  protocol: string
-  plate: string
-  client: string
-  service: string
-  status: string
-  providerProtocol: string
-  date: string
-  hour?: string | null
-  specialBudgets?: Prisma.SpecialBudgetCreateNestedManyWithoutFk_order_protocolInput
-}
-
-export type OrderUncheckedCreateWithoutMobilityServiceInput = {
-  protocol: string
-  plate: string
-  client: string
-  service: string
-  status: string
-  providerProtocol: string
-  date: string
-  hour?: string | null
-  specialBudgets?: Prisma.SpecialBudgetUncheckedCreateNestedManyWithoutFk_order_protocolInput
-}
-
-export type OrderCreateOrConnectWithoutMobilityServiceInput = {
-  where: Prisma.OrderWhereUniqueInput
-  create: Prisma.XOR<Prisma.OrderCreateWithoutMobilityServiceInput, Prisma.OrderUncheckedCreateWithoutMobilityServiceInput>
-}
-
-export type OrderUpsertWithoutMobilityServiceInput = {
-  update: Prisma.XOR<Prisma.OrderUpdateWithoutMobilityServiceInput, Prisma.OrderUncheckedUpdateWithoutMobilityServiceInput>
-  create: Prisma.XOR<Prisma.OrderCreateWithoutMobilityServiceInput, Prisma.OrderUncheckedCreateWithoutMobilityServiceInput>
-  where?: Prisma.OrderWhereInput
-}
-
-export type OrderUpdateToOneWithWhereWithoutMobilityServiceInput = {
-  where?: Prisma.OrderWhereInput
-  data: Prisma.XOR<Prisma.OrderUpdateWithoutMobilityServiceInput, Prisma.OrderUncheckedUpdateWithoutMobilityServiceInput>
-}
-
-export type OrderUpdateWithoutMobilityServiceInput = {
-  protocol?: Prisma.StringFieldUpdateOperationsInput | string
-  plate?: Prisma.StringFieldUpdateOperationsInput | string
-  client?: Prisma.StringFieldUpdateOperationsInput | string
-  service?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.StringFieldUpdateOperationsInput | string
-  providerProtocol?: Prisma.StringFieldUpdateOperationsInput | string
-  date?: Prisma.StringFieldUpdateOperationsInput | string
-  hour?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  specialBudgets?: Prisma.SpecialBudgetUpdateManyWithoutFk_order_protocolNestedInput
-}
-
-export type OrderUncheckedUpdateWithoutMobilityServiceInput = {
-  protocol?: Prisma.StringFieldUpdateOperationsInput | string
-  plate?: Prisma.StringFieldUpdateOperationsInput | string
-  client?: Prisma.StringFieldUpdateOperationsInput | string
-  service?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.StringFieldUpdateOperationsInput | string
-  providerProtocol?: Prisma.StringFieldUpdateOperationsInput | string
-  date?: Prisma.StringFieldUpdateOperationsInput | string
-  hour?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  specialBudgets?: Prisma.SpecialBudgetUncheckedUpdateManyWithoutFk_order_protocolNestedInput
+  provider?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  eta?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  agentName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  hasChecklist?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
 }
 
 
@@ -560,13 +609,11 @@ export type OrderUncheckedUpdateWithoutMobilityServiceInput = {
  */
 
 export type OrderCountOutputType = {
-  specialBudgets: number
-  mobilityService: number
+  notes: number
 }
 
 export type OrderCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  specialBudgets?: boolean | OrderCountOutputTypeCountSpecialBudgetsArgs
-  mobilityService?: boolean | OrderCountOutputTypeCountMobilityServiceArgs
+  notes?: boolean | OrderCountOutputTypeCountNotesArgs
 }
 
 /**
@@ -582,69 +629,72 @@ export type OrderCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extens
 /**
  * OrderCountOutputType without action
  */
-export type OrderCountOutputTypeCountSpecialBudgetsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.SpecialBudgetWhereInput
-}
-
-/**
- * OrderCountOutputType without action
- */
-export type OrderCountOutputTypeCountMobilityServiceArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.MobilityServiceWhereInput
+export type OrderCountOutputTypeCountNotesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.OrderNoteWhereInput
 }
 
 
 export type OrderSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
-  protocol?: boolean
+  ticket?: boolean
   plate?: boolean
   client?: boolean
   service?: boolean
   status?: boolean
-  providerProtocol?: boolean
-  date?: boolean
-  hour?: boolean
-  specialBudgets?: boolean | Prisma.Order$specialBudgetsArgs<ExtArgs>
-  mobilityService?: boolean | Prisma.Order$mobilityServiceArgs<ExtArgs>
+  provider?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
+  eta?: boolean
+  agentName?: boolean
+  hasChecklist?: boolean
+  notes?: boolean | Prisma.Order$notesArgs<ExtArgs>
   _count?: boolean | Prisma.OrderCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["order"]>
 
 export type OrderSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
-  protocol?: boolean
+  ticket?: boolean
   plate?: boolean
   client?: boolean
   service?: boolean
   status?: boolean
-  providerProtocol?: boolean
-  date?: boolean
-  hour?: boolean
+  provider?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
+  eta?: boolean
+  agentName?: boolean
+  hasChecklist?: boolean
 }, ExtArgs["result"]["order"]>
 
 export type OrderSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
-  protocol?: boolean
+  ticket?: boolean
   plate?: boolean
   client?: boolean
   service?: boolean
   status?: boolean
-  providerProtocol?: boolean
-  date?: boolean
-  hour?: boolean
+  provider?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
+  eta?: boolean
+  agentName?: boolean
+  hasChecklist?: boolean
 }, ExtArgs["result"]["order"]>
 
 export type OrderSelectScalar = {
-  protocol?: boolean
+  ticket?: boolean
   plate?: boolean
   client?: boolean
   service?: boolean
   status?: boolean
-  providerProtocol?: boolean
-  date?: boolean
-  hour?: boolean
+  provider?: boolean
+  createdAt?: boolean
+  updatedAt?: boolean
+  eta?: boolean
+  agentName?: boolean
+  hasChecklist?: boolean
 }
 
-export type OrderOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"protocol" | "plate" | "client" | "service" | "status" | "providerProtocol" | "date" | "hour", ExtArgs["result"]["order"]>
+export type OrderOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"ticket" | "plate" | "client" | "service" | "status" | "provider" | "createdAt" | "updatedAt" | "eta" | "agentName" | "hasChecklist", ExtArgs["result"]["order"]>
 export type OrderInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  specialBudgets?: boolean | Prisma.Order$specialBudgetsArgs<ExtArgs>
-  mobilityService?: boolean | Prisma.Order$mobilityServiceArgs<ExtArgs>
+  notes?: boolean | Prisma.Order$notesArgs<ExtArgs>
   _count?: boolean | Prisma.OrderCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type OrderIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -653,18 +703,20 @@ export type OrderIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extens
 export type $OrderPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Order"
   objects: {
-    specialBudgets: Prisma.$SpecialBudgetPayload<ExtArgs>[]
-    mobilityService: Prisma.$MobilityServicePayload<ExtArgs>[]
+    notes: Prisma.$OrderNotePayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
-    protocol: string
+    ticket: string
     plate: string
     client: string
     service: string
     status: string
-    providerProtocol: string
-    date: string
-    hour: string | null
+    provider: string
+    createdAt: Date
+    updatedAt: Date
+    eta: number | null
+    agentName: string | null
+    hasChecklist: boolean | null
   }, ExtArgs["result"]["order"]>
   composites: {}
 }
@@ -748,8 +800,8 @@ export interface OrderDelegate<ExtArgs extends runtime.Types.Extensions.Internal
    * // Get first 10 Orders
    * const orders = await prisma.order.findMany({ take: 10 })
    * 
-   * // Only select the `protocol`
-   * const orderWithProtocolOnly = await prisma.order.findMany({ select: { protocol: true } })
+   * // Only select the `ticket`
+   * const orderWithTicketOnly = await prisma.order.findMany({ select: { ticket: true } })
    * 
    */
   findMany<T extends OrderFindManyArgs>(args?: Prisma.SelectSubset<T, OrderFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$OrderPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
@@ -793,9 +845,9 @@ export interface OrderDelegate<ExtArgs extends runtime.Types.Extensions.Internal
    *   ]
    * })
    * 
-   * // Create many Orders and only return the `protocol`
-   * const orderWithProtocolOnly = await prisma.order.createManyAndReturn({
-   *   select: { protocol: true },
+   * // Create many Orders and only return the `ticket`
+   * const orderWithTicketOnly = await prisma.order.createManyAndReturn({
+   *   select: { ticket: true },
    *   data: [
    *     // ... provide data here
    *   ]
@@ -884,9 +936,9 @@ export interface OrderDelegate<ExtArgs extends runtime.Types.Extensions.Internal
    *   ]
    * })
    * 
-   * // Update zero or more Orders and only return the `protocol`
-   * const orderWithProtocolOnly = await prisma.order.updateManyAndReturn({
-   *   select: { protocol: true },
+   * // Update zero or more Orders and only return the `ticket`
+   * const orderWithTicketOnly = await prisma.order.updateManyAndReturn({
+   *   select: { ticket: true },
    *   where: {
    *     // ... provide filter here
    *   },
@@ -1059,8 +1111,7 @@ readonly fields: OrderFieldRefs;
  */
 export interface Prisma__OrderClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  specialBudgets<T extends Prisma.Order$specialBudgetsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Order$specialBudgetsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SpecialBudgetPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  mobilityService<T extends Prisma.Order$mobilityServiceArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Order$mobilityServiceArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MobilityServicePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  notes<T extends Prisma.Order$notesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Order$notesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$OrderNotePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1090,14 +1141,17 @@ export interface Prisma__OrderClient<T, Null = never, ExtArgs extends runtime.Ty
  * Fields of the Order model
  */
 export interface OrderFieldRefs {
-  readonly protocol: Prisma.FieldRef<"Order", 'String'>
+  readonly ticket: Prisma.FieldRef<"Order", 'String'>
   readonly plate: Prisma.FieldRef<"Order", 'String'>
   readonly client: Prisma.FieldRef<"Order", 'String'>
   readonly service: Prisma.FieldRef<"Order", 'String'>
   readonly status: Prisma.FieldRef<"Order", 'String'>
-  readonly providerProtocol: Prisma.FieldRef<"Order", 'String'>
-  readonly date: Prisma.FieldRef<"Order", 'String'>
-  readonly hour: Prisma.FieldRef<"Order", 'String'>
+  readonly provider: Prisma.FieldRef<"Order", 'String'>
+  readonly createdAt: Prisma.FieldRef<"Order", 'DateTime'>
+  readonly updatedAt: Prisma.FieldRef<"Order", 'DateTime'>
+  readonly eta: Prisma.FieldRef<"Order", 'Int'>
+  readonly agentName: Prisma.FieldRef<"Order", 'String'>
+  readonly hasChecklist: Prisma.FieldRef<"Order", 'Boolean'>
 }
     
 
@@ -1484,51 +1538,27 @@ export type OrderDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Interna
 }
 
 /**
- * Order.specialBudgets
+ * Order.notes
  */
-export type Order$specialBudgetsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type Order$notesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the SpecialBudget
+   * Select specific fields to fetch from the OrderNote
    */
-  select?: Prisma.SpecialBudgetSelect<ExtArgs> | null
+  select?: Prisma.OrderNoteSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the SpecialBudget
+   * Omit specific fields from the OrderNote
    */
-  omit?: Prisma.SpecialBudgetOmit<ExtArgs> | null
+  omit?: Prisma.OrderNoteOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.SpecialBudgetInclude<ExtArgs> | null
-  where?: Prisma.SpecialBudgetWhereInput
-  orderBy?: Prisma.SpecialBudgetOrderByWithRelationInput | Prisma.SpecialBudgetOrderByWithRelationInput[]
-  cursor?: Prisma.SpecialBudgetWhereUniqueInput
+  include?: Prisma.OrderNoteInclude<ExtArgs> | null
+  where?: Prisma.OrderNoteWhereInput
+  orderBy?: Prisma.OrderNoteOrderByWithRelationInput | Prisma.OrderNoteOrderByWithRelationInput[]
+  cursor?: Prisma.OrderNoteWhereUniqueInput
   take?: number
   skip?: number
-  distinct?: Prisma.SpecialBudgetScalarFieldEnum | Prisma.SpecialBudgetScalarFieldEnum[]
-}
-
-/**
- * Order.mobilityService
- */
-export type Order$mobilityServiceArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the MobilityService
-   */
-  select?: Prisma.MobilityServiceSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the MobilityService
-   */
-  omit?: Prisma.MobilityServiceOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.MobilityServiceInclude<ExtArgs> | null
-  where?: Prisma.MobilityServiceWhereInput
-  orderBy?: Prisma.MobilityServiceOrderByWithRelationInput | Prisma.MobilityServiceOrderByWithRelationInput[]
-  cursor?: Prisma.MobilityServiceWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.MobilityServiceScalarFieldEnum | Prisma.MobilityServiceScalarFieldEnum[]
+  distinct?: Prisma.OrderNoteScalarFieldEnum | Prisma.OrderNoteScalarFieldEnum[]
 }
 
 /**

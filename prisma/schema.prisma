@@ -11,52 +11,27 @@ datasource db {
 }
 
 model Order {
-  protocol String @id
-  plate    String
-  client   String
-  service  String
-  status   String
-  providerProtocol String
-  date     String
-  hour     String?
+  ticket       String @id
+  plate        String 
+  client       String
+  service      String
+  status       String
+  provider     String
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @default(now())
+  eta          Int?         
+  agentName    String?
+  hasChecklist Boolean?     @default(false)
 
-  specialBudgets SpecialBudget[]
-  mobilityService MobilityService[] 
+  notes OrderNote[]
+
 }
 
+model OrderNote {
+  orderTicket String @id
+  note        String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @default(now())
 
-
-model SpecialBudget {
-  id               Int     @id @default(autoincrement())
-  status           String  
-  cost             Float
-  wheelDolliesQtd  Int?
-  additionalWheels Int?
-  daysParked       Int?
-  isUprighted      Boolean?
-  isGroundWithdraw Boolean?
-  isOffRoad        Boolean?
-  origin           String?
-  destiny          String?
-  workerBase       String?
-  reason           String? 
-  explanation      String?
-
-  orderProtocol String
-  fk_order_protocol Order @relation(references: [protocol], fields: [orderProtocol])
-}
-
-model MobilityService {
-  id            Int @id @default(autoincrement())
-  destiny       String
-  status        String
-  cost          Float
-  type          String
-  plate         String
-  totalDistance Int
-  passengersQtd Int
-  vehicleModel  String
-
-  orderProtocol String
-  fk_order_protocol Order @relation(references: [protocol], fields: [orderProtocol])
+  order Order @relation(fields: [orderTicket], references: [ticket])
 }

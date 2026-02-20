@@ -23,12 +23,7 @@ export * from './enums.js';
  */
 export type Order = Prisma.OrderModel
 /**
- * Model SpecialBudget
+ * Model OrderNote
  * 
  */
-export type SpecialBudget = Prisma.SpecialBudgetModel
-/**
- * Model MobilityService
- * 
- */
-export type MobilityService = Prisma.MobilityServiceModel
+export type OrderNote = Prisma.OrderNoteModel
