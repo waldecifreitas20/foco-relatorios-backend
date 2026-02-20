@@ -31,7 +31,11 @@ export class OrderRepository {
   async getAll(skip: number, take: number) {
     return await this.table.findMany({
       include: {
-        notes: true,
+        notes: {
+          select: {
+            note: true,
+          }
+        },
       },
       skip,
       take,

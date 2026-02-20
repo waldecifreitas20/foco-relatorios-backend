@@ -48,6 +48,7 @@ export class OrderService {
       const offset = page * limit;
       const orders = await this.ordersRepo.getAll(offset, limit) ?? [];
 
+
       return {
         status: 200,
         page,
@@ -56,6 +57,11 @@ export class OrderService {
           const [dateToCompare] = new Date(createdAt).toISOString().split("T");
 
           return orderDate === dateToCompare;
+        }).map(o => {
+          return {
+            ...o,
+            notes: o.notes.map(n => n.note),
+          }
         }),
       }
     } catch (error) {
