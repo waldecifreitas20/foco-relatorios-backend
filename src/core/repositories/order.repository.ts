@@ -48,6 +48,11 @@ export class OrderRepository {
         plate: patch.plate,
         service: patch.service,
         status: patch.status,
+        eta: patch.eta,
+        agentName: patch.agentName,
+        hasChecklist: patch.hasChecklist,
+        client: patch.client,
+        provider: patch.provider,
       }
     })
 

@@ -69,6 +69,10 @@ export class OrderService {
     try {
       await this.ordersRepo.update(patch);
 
+      if (patch.notes) {
+        await this.notesRepo.create(patch.ticket, patch.notes);
+      }
+
       return {
         status: 204,
       }

@@ -20,11 +20,22 @@ export type OrderNoteModel = runtime.Types.Result.DefaultSelection<Prisma.$Order
 
 export type AggregateOrderNote = {
   _count: OrderNoteCountAggregateOutputType | null
+  _avg: OrderNoteAvgAggregateOutputType | null
+  _sum: OrderNoteSumAggregateOutputType | null
   _min: OrderNoteMinAggregateOutputType | null
   _max: OrderNoteMaxAggregateOutputType | null
 }
 
+export type OrderNoteAvgAggregateOutputType = {
+  id: number | null
+}
+
+export type OrderNoteSumAggregateOutputType = {
+  id: number | null
+}
+
 export type OrderNoteMinAggregateOutputType = {
+  id: number | null
   orderTicket: string | null
   note: string | null
   createdAt: Date | null
@@ -32,6 +43,7 @@ export type OrderNoteMinAggregateOutputType = {
 }
 
 export type OrderNoteMaxAggregateOutputType = {
+  id: number | null
   orderTicket: string | null
   note: string | null
   createdAt: Date | null
@@ -39,6 +51,7 @@ export type OrderNoteMaxAggregateOutputType = {
 }
 
 export type OrderNoteCountAggregateOutputType = {
+  id: number
   orderTicket: number
   note: number
   createdAt: number
@@ -47,7 +60,16 @@ export type OrderNoteCountAggregateOutputType = {
 }
 
 
+export type OrderNoteAvgAggregateInputType = {
+  id?: true
+}
+
+export type OrderNoteSumAggregateInputType = {
+  id?: true
+}
+
 export type OrderNoteMinAggregateInputType = {
+  id?: true
   orderTicket?: true
   note?: true
   createdAt?: true
@@ -55,6 +77,7 @@ export type OrderNoteMinAggregateInputType = {
 }
 
 export type OrderNoteMaxAggregateInputType = {
+  id?: true
   orderTicket?: true
   note?: true
   createdAt?: true
@@ -62,6 +85,7 @@ export type OrderNoteMaxAggregateInputType = {
 }
 
 export type OrderNoteCountAggregateInputType = {
+  id?: true
   orderTicket?: true
   note?: true
   createdAt?: true
@@ -107,6 +131,18 @@ export type OrderNoteAggregateArgs<ExtArgs extends runtime.Types.Extensions.Inte
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
    * 
+   * Select which fields to average
+  **/
+  _avg?: OrderNoteAvgAggregateInputType
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+   * 
+   * Select which fields to sum
+  **/
+  _sum?: OrderNoteSumAggregateInputType
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+   * 
    * Select which fields to find the minimum value
   **/
   _min?: OrderNoteMinAggregateInputType
@@ -137,16 +173,21 @@ export type OrderNoteGroupByArgs<ExtArgs extends runtime.Types.Extensions.Intern
   take?: number
   skip?: number
   _count?: OrderNoteCountAggregateInputType | true
+  _avg?: OrderNoteAvgAggregateInputType
+  _sum?: OrderNoteSumAggregateInputType
   _min?: OrderNoteMinAggregateInputType
   _max?: OrderNoteMaxAggregateInputType
 }
 
 export type OrderNoteGroupByOutputType = {
+  id: number
   orderTicket: string
   note: string
   createdAt: Date
   updatedAt: Date
   _count: OrderNoteCountAggregateOutputType | null
+  _avg: OrderNoteAvgAggregateOutputType | null
+  _sum: OrderNoteSumAggregateOutputType | null
   _min: OrderNoteMinAggregateOutputType | null
   _max: OrderNoteMaxAggregateOutputType | null
 }
@@ -170,6 +211,7 @@ export type OrderNoteWhereInput = {
   AND?: Prisma.OrderNoteWhereInput | Prisma.OrderNoteWhereInput[]
   OR?: Prisma.OrderNoteWhereInput[]
   NOT?: Prisma.OrderNoteWhereInput | Prisma.OrderNoteWhereInput[]
+  id?: Prisma.IntFilter<"OrderNote"> | number
   orderTicket?: Prisma.StringFilter<"OrderNote"> | string
   note?: Prisma.StringFilter<"OrderNote"> | string
   createdAt?: Prisma.DateTimeFilter<"OrderNote"> | Date | string
@@ -178,6 +220,7 @@ export type OrderNoteWhereInput = {
 }
 
 export type OrderNoteOrderByWithRelationInput = {
+  id?: Prisma.SortOrder
   orderTicket?: Prisma.SortOrder
   note?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -186,30 +229,35 @@ export type OrderNoteOrderByWithRelationInput = {
 }
 
 export type OrderNoteWhereUniqueInput = Prisma.AtLeast<{
-  orderTicket?: string
+  id?: number
   AND?: Prisma.OrderNoteWhereInput | Prisma.OrderNoteWhereInput[]
   OR?: Prisma.OrderNoteWhereInput[]
   NOT?: Prisma.OrderNoteWhereInput | Prisma.OrderNoteWhereInput[]
+  orderTicket?: Prisma.StringFilter<"OrderNote"> | string
   note?: Prisma.StringFilter<"OrderNote"> | string
   createdAt?: Prisma.DateTimeFilter<"OrderNote"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"OrderNote"> | Date | string
   order?: Prisma.XOR<Prisma.OrderScalarRelationFilter, Prisma.OrderWhereInput>
-}, "orderTicket">
+}, "id">
 
 export type OrderNoteOrderByWithAggregationInput = {
+  id?: Prisma.SortOrder
   orderTicket?: Prisma.SortOrder
   note?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.OrderNoteCountOrderByAggregateInput
+  _avg?: Prisma.OrderNoteAvgOrderByAggregateInput
   _max?: Prisma.OrderNoteMaxOrderByAggregateInput
   _min?: Prisma.OrderNoteMinOrderByAggregateInput
+  _sum?: Prisma.OrderNoteSumOrderByAggregateInput
 }
 
 export type OrderNoteScalarWhereWithAggregatesInput = {
   AND?: Prisma.OrderNoteScalarWhereWithAggregatesInput | Prisma.OrderNoteScalarWhereWithAggregatesInput[]
   OR?: Prisma.OrderNoteScalarWhereWithAggregatesInput[]
   NOT?: Prisma.OrderNoteScalarWhereWithAggregatesInput | Prisma.OrderNoteScalarWhereWithAggregatesInput[]
+  id?: Prisma.IntWithAggregatesFilter<"OrderNote"> | number
   orderTicket?: Prisma.StringWithAggregatesFilter<"OrderNote"> | string
   note?: Prisma.StringWithAggregatesFilter<"OrderNote"> | string
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"OrderNote"> | Date | string
@@ -224,6 +272,7 @@ export type OrderNoteCreateInput = {
 }
 
 export type OrderNoteUncheckedCreateInput = {
+  id?: number
   orderTicket: string
   note: string
   createdAt?: Date | string
@@ -238,6 +287,7 @@ export type OrderNoteUpdateInput = {
 }
 
 export type OrderNoteUncheckedUpdateInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
   orderTicket?: Prisma.StringFieldUpdateOperationsInput | string
   note?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -245,6 +295,7 @@ export type OrderNoteUncheckedUpdateInput = {
 }
 
 export type OrderNoteCreateManyInput = {
+  id?: number
   orderTicket: string
   note: string
   createdAt?: Date | string
@@ -258,6 +309,7 @@ export type OrderNoteUpdateManyMutationInput = {
 }
 
 export type OrderNoteUncheckedUpdateManyInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
   orderTicket?: Prisma.StringFieldUpdateOperationsInput | string
   note?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -275,13 +327,19 @@ export type OrderNoteOrderByRelationAggregateInput = {
 }
 
 export type OrderNoteCountOrderByAggregateInput = {
+  id?: Prisma.SortOrder
   orderTicket?: Prisma.SortOrder
   note?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
 
+export type OrderNoteAvgOrderByAggregateInput = {
+  id?: Prisma.SortOrder
+}
+
 export type OrderNoteMaxOrderByAggregateInput = {
+  id?: Prisma.SortOrder
   orderTicket?: Prisma.SortOrder
   note?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
@@ -289,10 +347,15 @@ export type OrderNoteMaxOrderByAggregateInput = {
 }
 
 export type OrderNoteMinOrderByAggregateInput = {
+  id?: Prisma.SortOrder
   orderTicket?: Prisma.SortOrder
   note?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+}
+
+export type OrderNoteSumOrderByAggregateInput = {
+  id?: Prisma.SortOrder
 }
 
 export type OrderNoteCreateNestedManyWithoutOrderInput = {
@@ -337,6 +400,14 @@ export type OrderNoteUncheckedUpdateManyWithoutOrderNestedInput = {
   deleteMany?: Prisma.OrderNoteScalarWhereInput | Prisma.OrderNoteScalarWhereInput[]
 }
 
+export type IntFieldUpdateOperationsInput = {
+  set?: number
+  increment?: number
+  decrement?: number
+  multiply?: number
+  divide?: number
+}
+
 export type OrderNoteCreateWithoutOrderInput = {
   note: string
   createdAt?: Date | string
@@ -344,6 +415,7 @@ export type OrderNoteCreateWithoutOrderInput = {
 }
 
 export type OrderNoteUncheckedCreateWithoutOrderInput = {
+  id?: number
   note: string
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -378,6 +450,7 @@ export type OrderNoteScalarWhereInput = {
   AND?: Prisma.OrderNoteScalarWhereInput | Prisma.OrderNoteScalarWhereInput[]
   OR?: Prisma.OrderNoteScalarWhereInput[]
   NOT?: Prisma.OrderNoteScalarWhereInput | Prisma.OrderNoteScalarWhereInput[]
+  id?: Prisma.IntFilter<"OrderNote"> | number
   orderTicket?: Prisma.StringFilter<"OrderNote"> | string
   note?: Prisma.StringFilter<"OrderNote"> | string
   createdAt?: Prisma.DateTimeFilter<"OrderNote"> | Date | string
@@ -385,6 +458,7 @@ export type OrderNoteScalarWhereInput = {
 }
 
 export type OrderNoteCreateManyOrderInput = {
+  id?: number
   note: string
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -397,12 +471,14 @@ export type OrderNoteUpdateWithoutOrderInput = {
 }
 
 export type OrderNoteUncheckedUpdateWithoutOrderInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
   note?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type OrderNoteUncheckedUpdateManyWithoutOrderInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
   note?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -411,6 +487,7 @@ export type OrderNoteUncheckedUpdateManyWithoutOrderInput = {
 
 
 export type OrderNoteSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+  id?: boolean
   orderTicket?: boolean
   note?: boolean
   createdAt?: boolean
@@ -419,6 +496,7 @@ export type OrderNoteSelect<ExtArgs extends runtime.Types.Extensions.InternalArg
 }, ExtArgs["result"]["orderNote"]>
 
 export type OrderNoteSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+  id?: boolean
   orderTicket?: boolean
   note?: boolean
   createdAt?: boolean
@@ -427,6 +505,7 @@ export type OrderNoteSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Ext
 }, ExtArgs["result"]["orderNote"]>
 
 export type OrderNoteSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+  id?: boolean
   orderTicket?: boolean
   note?: boolean
   createdAt?: boolean
@@ -435,13 +514,14 @@ export type OrderNoteSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Ext
 }, ExtArgs["result"]["orderNote"]>
 
 export type OrderNoteSelectScalar = {
+  id?: boolean
   orderTicket?: boolean
   note?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type OrderNoteOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"orderTicket" | "note" | "createdAt" | "updatedAt", ExtArgs["result"]["orderNote"]>
+export type OrderNoteOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "orderTicket" | "note" | "createdAt" | "updatedAt", ExtArgs["result"]["orderNote"]>
 export type OrderNoteInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   order?: boolean | Prisma.OrderDefaultArgs<ExtArgs>
 }
@@ -458,6 +538,7 @@ export type $OrderNotePayload<ExtArgs extends runtime.Types.Extensions.InternalA
     order: Prisma.$OrderPayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
+    id: number
     orderTicket: string
     note: string
     createdAt: Date
@@ -545,8 +626,8 @@ export interface OrderNoteDelegate<ExtArgs extends runtime.Types.Extensions.Inte
    * // Get first 10 OrderNotes
    * const orderNotes = await prisma.orderNote.findMany({ take: 10 })
    * 
-   * // Only select the `orderTicket`
-   * const orderNoteWithOrderTicketOnly = await prisma.orderNote.findMany({ select: { orderTicket: true } })
+   * // Only select the `id`
+   * const orderNoteWithIdOnly = await prisma.orderNote.findMany({ select: { id: true } })
    * 
    */
   findMany<T extends OrderNoteFindManyArgs>(args?: Prisma.SelectSubset<T, OrderNoteFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$OrderNotePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
@@ -590,9 +671,9 @@ export interface OrderNoteDelegate<ExtArgs extends runtime.Types.Extensions.Inte
    *   ]
    * })
    * 
-   * // Create many OrderNotes and only return the `orderTicket`
-   * const orderNoteWithOrderTicketOnly = await prisma.orderNote.createManyAndReturn({
-   *   select: { orderTicket: true },
+   * // Create many OrderNotes and only return the `id`
+   * const orderNoteWithIdOnly = await prisma.orderNote.createManyAndReturn({
+   *   select: { id: true },
    *   data: [
    *     // ... provide data here
    *   ]
@@ -681,9 +762,9 @@ export interface OrderNoteDelegate<ExtArgs extends runtime.Types.Extensions.Inte
    *   ]
    * })
    * 
-   * // Update zero or more OrderNotes and only return the `orderTicket`
-   * const orderNoteWithOrderTicketOnly = await prisma.orderNote.updateManyAndReturn({
-   *   select: { orderTicket: true },
+   * // Update zero or more OrderNotes and only return the `id`
+   * const orderNoteWithIdOnly = await prisma.orderNote.updateManyAndReturn({
+   *   select: { id: true },
    *   where: {
    *     // ... provide filter here
    *   },
@@ -886,6 +967,7 @@ export interface Prisma__OrderNoteClient<T, Null = never, ExtArgs extends runtim
  * Fields of the OrderNote model
  */
 export interface OrderNoteFieldRefs {
+  readonly id: Prisma.FieldRef<"OrderNote", 'Int'>
   readonly orderTicket: Prisma.FieldRef<"OrderNote", 'String'>
   readonly note: Prisma.FieldRef<"OrderNote", 'String'>
   readonly createdAt: Prisma.FieldRef<"OrderNote", 'DateTime'>

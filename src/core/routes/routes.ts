@@ -30,10 +30,10 @@ appRouter.delete("/delete/:protocol", async (req, res) => {
 });
 
 
-appRouter.patch("/update", async (req, res) => {
+appRouter.patch("/update/:ticket", async (req, res) => {
   try {
-    const { body } = req;
-    const response = await orderService.update(body);
+    const { body, params } = req;
+    const response = await orderService.update({ ...body, ticket: params.ticket });
     return res.status(response.status).json(response);
   } catch (error) {
     console.error(error);

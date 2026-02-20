@@ -27,7 +27,8 @@ model Order {
 }
 
 model OrderNote {
-  orderTicket String   @id
+  id          Int      @id @default(autoincrement())
+  orderTicket String
   note        String
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
