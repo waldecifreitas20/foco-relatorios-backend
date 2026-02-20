@@ -34,12 +34,18 @@ export class OrderService {
   }
 
 
-  async getAll() {
+  async getAll({
+    page, limit, createdAt
+  }: {
+    page: number, limit: number, createdAt: Date
+  }) {
     try {
-      const orders = await this.ordersRepo.getAll();
+      const offset = page * limit;
+      const orders = await this.ordersRepo.getAll(offset, limit, createdAt);
 
       return {
         status: 200,
+        page,
         orders,
       }
     } catch (error) {

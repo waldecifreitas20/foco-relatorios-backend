@@ -15,7 +15,7 @@ export class OrderRepository {
           status: order.status,
           ticket: order.ticket,
           provider: order.provider,
-          agentName: order.agentName ?? "",          
+          agentName: order.agentName ?? "",
         },
       });
     } catch (error: any) {
@@ -28,8 +28,20 @@ export class OrderRepository {
 
   }
 
-  async getAll() {
-    return await this.table.findMany();
+  async getAll(skip: number, take: number, createdAt: Date) {
+    return await this.table.findMany({
+      include: {
+        notes: true,
+      },
+      skip,
+      take,
+      
+      where : {
+        createdAt : {
+          
+        }
+      }
+    });
   }
 
 

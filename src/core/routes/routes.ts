@@ -49,12 +49,12 @@ appRouter.get("/all", async (req, res) => {
   try {
     const filters = {
       limit: Number(req.query.limit ?? 50),
-      offset: Number(req.query.offset ?? 0),
-      date: new Date((req.query.date as string) ?? Date.now()),
+      page: Number(req.query.page ?? 0),
+      createdAt: new Date((req.query.createdAt as string) ?? Date.now()),
     }
-    const response = await orderService.getAll();
+    const response = await orderService.getAll(filters);
 
-    return res.status(response.status).json({ ...response, filters });
+    return res.status(response.status).json({ ...response });
 
   } catch (error) {
     console.error(error);
