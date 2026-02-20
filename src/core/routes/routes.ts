@@ -47,8 +47,15 @@ appRouter.patch("/update", async (req, res) => {
 
 appRouter.get("/all", async (req, res) => {
   try {
+    const filters = {
+      limit: Number(req.query.limit) ?? 50,
+      offset: Number(req.query.offset) ?? 0,
+      date: new Date((req.query.date as string) ?? Date.now()),
+    }
     const response = await orderService.getAll();
-    return res.status(response.status).json(response);
+
+    return res.status(response.status).json({ ...response, filters });
+
   } catch (error) {
     console.error(error);
     return res.status(500).json({
