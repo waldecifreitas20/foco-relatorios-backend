@@ -25,11 +25,6 @@ appRouter.post("/create", async (req, res) => {
 });
 
 
-appRouter.delete("/delete/:protocol", async (req, res) => {
-  return res.status(200).json({ msg: "route not implemented yet" });
-});
-
-
 appRouter.patch("/update/:ticket", async (req, res) => {
   try {
     const { body, params } = req;
