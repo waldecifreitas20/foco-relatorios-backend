@@ -1,10 +1,12 @@
 import { Order } from "../../types/Order.js";
 import { getErrorResponse } from "../../utils/errors.js";
 import { OrderRepository } from "../repositories/order.repository.js";
+import { NoteRepository } from "../repositories/note.repository.js";
 
 
 export class OrderService {
   ordersRepo = new OrderRepository();
+  notesRepo = new NoteRepository();
 
   async create(data: Order) {
     try {
@@ -16,10 +18,13 @@ export class OrderService {
       }
 
       const { ticket } = await this.ordersRepo.create(data);
+      const note = await this.notesRepo.create(ticket, data.notes ?? []);
+
       return {
         status: 200,
         message: "order created",
         ticket,
+        note
       }
 
     } catch (error: any) {
@@ -42,8 +47,6 @@ export class OrderService {
     try {
       const offset = page * limit;
       const orders = await this.ordersRepo.getAll(offset, limit) ?? [];
-
-
 
       return {
         status: 200,
