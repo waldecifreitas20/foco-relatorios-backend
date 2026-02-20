@@ -11,27 +11,26 @@ datasource db {
 }
 
 model Order {
-  ticket       String @id
-  plate        String 
+  ticket       String   @id
+  plate        String
   client       String
   service      String
   status       String
   provider     String
-  createdAt    DateTime    @default(now())
-  updatedAt    DateTime    @default(now())
-  eta          Int?         
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  eta          Int?
   agentName    String?
-  hasChecklist Boolean?     @default(false)
+  hasChecklist Boolean? @default(false)
 
   notes OrderNote[]
-
 }
 
 model OrderNote {
-  orderTicket String @id
+  orderTicket String   @id
   note        String
   createdAt   DateTime @default(now())
-  updatedAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 
   order Order @relation(fields: [orderTicket], references: [ticket])
 }
