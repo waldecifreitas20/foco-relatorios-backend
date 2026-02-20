@@ -48,8 +48,8 @@ appRouter.patch("/update", async (req, res) => {
 appRouter.get("/all", async (req, res) => {
   try {
     const filters = {
-      limit: Number(req.query.limit) ?? 50,
-      offset: Number(req.query.offset) ?? 0,
+      limit: Number(req.query.limit ?? 50),
+      offset: Number(req.query.offset ?? 0),
       date: new Date((req.query.date as string) ?? Date.now()),
     }
     const response = await orderService.getAll();
