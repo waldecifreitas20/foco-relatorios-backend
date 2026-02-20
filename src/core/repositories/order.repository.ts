@@ -28,19 +28,13 @@ export class OrderRepository {
 
   }
 
-  async getAll(skip: number, take: number, createdAt: Date) {
+  async getAll(skip: number, take: number) {
     return await this.table.findMany({
       include: {
         notes: true,
       },
       skip,
       take,
-      
-      where : {
-        createdAt : {
-          
-        }
-      }
     });
   }
 

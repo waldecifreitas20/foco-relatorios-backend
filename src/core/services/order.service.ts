@@ -41,12 +41,19 @@ export class OrderService {
   }) {
     try {
       const offset = page * limit;
-      const orders = await this.ordersRepo.getAll(offset, limit, createdAt);
+      const orders = await this.ordersRepo.getAll(offset, limit) ?? [];
+
+
 
       return {
         status: 200,
         page,
-        orders,
+        orders: orders.filter(o => {
+          const [orderDate] = new Date(o.createdAt).toISOString().split("T");
+          const [dateToCompare] = new Date(createdAt).toISOString().split("T");
+
+          return orderDate === dateToCompare;
+        }),
       }
     } catch (error) {
       console.log(error);
