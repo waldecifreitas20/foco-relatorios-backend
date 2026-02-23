@@ -1,22 +1,12 @@
-# fly.toml app configuration file generated for bosch-relatorios on 2026-01-27T12:49:50-03:00
+# fly.toml app configuration file generated for rsa-monitoring on 2026-02-21T01:49:06-03:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = 'bosch-relatorios'
+app = 'rsa-monitoring'
 primary_region = 'gru'
 
 [build]
-
-[processes]
-  app = 'node ./dbsetup.js npm run start'
-
-[[mounts]]
-  source = 'data'
-  destination = '/data'
-  auto_extend_size_threshold = 80
-  auto_extend_size_increment = '1GB'
-  auto_extend_size_limit = '10GB'
 
 [http_service]
   internal_port = 3000

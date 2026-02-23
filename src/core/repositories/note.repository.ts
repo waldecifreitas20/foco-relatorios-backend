@@ -1,4 +1,4 @@
-import { AppDatabase } from "../../database/connection";
+import { AppDatabase } from "../../database/connection.js";
 
 export class NoteRepository {
   async create(ticket: string, notes: string[]) {
