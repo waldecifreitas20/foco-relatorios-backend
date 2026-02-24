@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docspris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client"
   output   = "../src/generated/prisma"
@@ -11,19 +8,18 @@ datasource db {
 }
 
 model Order {
-  ticket       String   @id
+  ticket       String      @id
   plate        String
   client       String
   service      String
   status       String
   provider     String
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
   eta          Int?
   agentName    String?
-  hasChecklist Boolean? @default(false)
-
-  notes OrderNote[]
+  hasChecklist Boolean?    @default(false)
+  notes        OrderNote[]
 }
 
 model OrderNote {
@@ -32,6 +28,5 @@ model OrderNote {
   note        String
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
-
-  order Order @relation(fields: [orderTicket], references: [ticket])
+  order       Order    @relation(fields: [orderTicket], references: [ticket])
 }
