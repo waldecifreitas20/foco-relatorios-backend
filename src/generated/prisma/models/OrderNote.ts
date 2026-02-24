@@ -428,6 +428,7 @@ export type OrderNoteCreateOrConnectWithoutOrderInput = {
 
 export type OrderNoteCreateManyOrderInputEnvelope = {
   data: Prisma.OrderNoteCreateManyOrderInput | Prisma.OrderNoteCreateManyOrderInput[]
+  skipDuplicates?: boolean
 }
 
 export type OrderNoteUpsertWithWhereUniqueWithoutOrderInput = {
@@ -1201,6 +1202,7 @@ export type OrderNoteCreateManyArgs<ExtArgs extends runtime.Types.Extensions.Int
    * The data used to create many OrderNotes.
    */
   data: Prisma.OrderNoteCreateManyInput | Prisma.OrderNoteCreateManyInput[]
+  skipDuplicates?: boolean
 }
 
 /**
@@ -1219,6 +1221,7 @@ export type OrderNoteCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Exten
    * The data used to create many OrderNotes.
    */
   data: Prisma.OrderNoteCreateManyInput | Prisma.OrderNoteCreateManyInput[]
+  skipDuplicates?: boolean
   /**
    * Choose, which related nodes to fetch as well
    */
