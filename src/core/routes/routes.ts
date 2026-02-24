@@ -40,6 +40,22 @@ appRouter.patch("/update/:ticket", async (req, res) => {
 });
 
 
+appRouter.get("/order/:ticket", async (req, res) => {
+  try {
+    const { ticket } = req.params;
+    const response = await orderService.getOrder(ticket);
+
+    return res.status(response.status).json({ ...response });
+
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({
+      status: 500,
+      response: "Internal error",
+    });
+  }
+});
+
 appRouter.get("/all", async (req, res) => {
   try {
     const filters = {
@@ -59,7 +75,6 @@ appRouter.get("/all", async (req, res) => {
     });
   }
 });
-
 
 
 export { appRouter };

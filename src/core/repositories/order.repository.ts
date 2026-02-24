@@ -42,6 +42,22 @@ export class OrderRepository {
   }
 
 
+  async getByTicket(ticket: string) {
+    return await this.table.findUnique({
+      where: {
+        ticket,
+      },
+      include: {
+        notes: {
+          select: {
+            note: true,
+          }
+        },
+      },
+    })
+  }
+
+
   async update(patch: any) {
     return await this.table.update({
       where: {

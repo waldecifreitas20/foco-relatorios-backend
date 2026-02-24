@@ -4,6 +4,13 @@ import { OrderRepository } from "../repositories/order.repository.js";
 import { NoteRepository } from "../repositories/note.repository.js";
 
 
+const isEqualDate = (date1: Date, date2: Date) => {
+  const [date1Only] = new Date(date1).toISOString().split("T");
+  const [date2Only] = new Date(date2).toISOString().split("T");
+  return date1Only === date2Only;
+}
+
+
 export class OrderService {
   ordersRepo = new OrderRepository();
   notesRepo = new NoteRepository();
@@ -53,10 +60,8 @@ export class OrderService {
         status: 200,
         page,
         orders: orders.filter(o => {
-          const [orderDate] = new Date(o.createdAt).toISOString().split("T");
-          const [dateToCompare] = new Date(createdAt).toISOString().split("T");
-
-          return orderDate === dateToCompare;
+          
+          return isEqualDate(o.createdAt, createdAt);
         }).map(o => {
           return {
             ...o,
@@ -70,6 +75,29 @@ export class OrderService {
     }
   }
 
+  async getOrder(ticket: string) {
+    try {
+      const order = await this.ordersRepo.getByTicket(ticket);
+   
+      if (!order) {
+        return {
+          status: 404,
+          error: "order not found",
+        }
+      }
+
+      return {
+        status: 200,
+        order: {
+          ...order,
+          notes: order.notes.map(n => n.note),
+        },
+      }
+    } catch (error) {
+      console.error(error);
+      return getErrorResponse(error);
+    }
+  }
 
   async update(patch: Order) {
     try {
