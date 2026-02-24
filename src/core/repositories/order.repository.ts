@@ -19,9 +19,8 @@ export class OrderRepository {
         },
       });
     } catch (error: any) {
-      // console.error(error);
+      console.error(error);
       const msg = getDatabaseErrorMessage(error.code);
-      console.log(msg);
 
       throw new Error(msg);
     }

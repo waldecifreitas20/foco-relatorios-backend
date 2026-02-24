@@ -7,13 +7,11 @@
   "scripts": {
     "dev": "tsx --watch src/index.ts",
     "build": "npx tsc --outDir dist/",
-    "prisma": "prisma migrate dev && prisma generate",
     "start": "node dist/src/index.js"
   },
   "author": "Waldeci Freitas",
   "license": "ISC",
   "dependencies": {
-    "@flydotio/litestream": "^1.0.1",
     "@prisma/adapter-neon": "^7.4.1",
     "@prisma/client": "^7.4.1",
     "@types/cors": "^2.8.19",
