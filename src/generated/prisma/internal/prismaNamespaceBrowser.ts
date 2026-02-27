@@ -74,6 +74,7 @@ export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof
 export const OrderScalarFieldEnum = {
   ticket: 'ticket',
   plate: 'plate',
+  date: 'date',
   client: 'client',
   service: 'service',
   status: 'status',

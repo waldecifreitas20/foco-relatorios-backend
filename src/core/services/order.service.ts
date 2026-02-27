@@ -2,6 +2,7 @@ import { Order } from "../../types/Order.js";
 import { getErrorResponse } from "../../utils/errors.js";
 import { OrderRepository } from "../repositories/order.repository.js";
 import { NoteRepository } from "../repositories/note.repository.js";
+import { CreateOrderDto } from "../../dtos/order.dto.js";
 
 
 const isEqualDate = (date1: Date, date2: Date) => {
@@ -15,7 +16,7 @@ export class OrderService {
   ordersRepo = new OrderRepository();
   notesRepo = new NoteRepository();
 
-  async create(data: Order) {
+  async create(data: CreateOrderDto) {
     try {
       if (!data.ticket) {
         return {
@@ -75,6 +76,7 @@ export class OrderService {
     }
   }
 
+
   async getOrder(ticket: string) {
     try {
       const order = await this.ordersRepo.getByTicket(ticket);
@@ -98,6 +100,7 @@ export class OrderService {
       return getErrorResponse(error);
     }
   }
+
 
   async update(patch: Order) {
     try {

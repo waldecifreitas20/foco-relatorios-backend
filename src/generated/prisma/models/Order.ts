@@ -37,6 +37,7 @@ export type OrderSumAggregateOutputType = {
 export type OrderMinAggregateOutputType = {
   ticket: string | null
   plate: string | null
+  date: string | null
   client: string | null
   service: string | null
   status: string | null
@@ -51,6 +52,7 @@ export type OrderMinAggregateOutputType = {
 export type OrderMaxAggregateOutputType = {
   ticket: string | null
   plate: string | null
+  date: string | null
   client: string | null
   service: string | null
   status: string | null
@@ -65,6 +67,7 @@ export type OrderMaxAggregateOutputType = {
 export type OrderCountAggregateOutputType = {
   ticket: number
   plate: number
+  date: number
   client: number
   service: number
   status: number
@@ -89,6 +92,7 @@ export type OrderSumAggregateInputType = {
 export type OrderMinAggregateInputType = {
   ticket?: true
   plate?: true
+  date?: true
   client?: true
   service?: true
   status?: true
@@ -103,6 +107,7 @@ export type OrderMinAggregateInputType = {
 export type OrderMaxAggregateInputType = {
   ticket?: true
   plate?: true
+  date?: true
   client?: true
   service?: true
   status?: true
@@ -117,6 +122,7 @@ export type OrderMaxAggregateInputType = {
 export type OrderCountAggregateInputType = {
   ticket?: true
   plate?: true
+  date?: true
   client?: true
   service?: true
   status?: true
@@ -218,6 +224,7 @@ export type OrderGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalAr
 export type OrderGroupByOutputType = {
   ticket: string
   plate: string
+  date: string
   client: string
   service: string
   status: string
@@ -255,6 +262,7 @@ export type OrderWhereInput = {
   NOT?: Prisma.OrderWhereInput | Prisma.OrderWhereInput[]
   ticket?: Prisma.StringFilter<"Order"> | string
   plate?: Prisma.StringFilter<"Order"> | string
+  date?: Prisma.StringFilter<"Order"> | string
   client?: Prisma.StringFilter<"Order"> | string
   service?: Prisma.StringFilter<"Order"> | string
   status?: Prisma.StringFilter<"Order"> | string
@@ -270,6 +278,7 @@ export type OrderWhereInput = {
 export type OrderOrderByWithRelationInput = {
   ticket?: Prisma.SortOrder
   plate?: Prisma.SortOrder
+  date?: Prisma.SortOrder
   client?: Prisma.SortOrder
   service?: Prisma.SortOrder
   status?: Prisma.SortOrder
@@ -288,6 +297,7 @@ export type OrderWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.OrderWhereInput[]
   NOT?: Prisma.OrderWhereInput | Prisma.OrderWhereInput[]
   plate?: Prisma.StringFilter<"Order"> | string
+  date?: Prisma.StringFilter<"Order"> | string
   client?: Prisma.StringFilter<"Order"> | string
   service?: Prisma.StringFilter<"Order"> | string
   status?: Prisma.StringFilter<"Order"> | string
@@ -303,6 +313,7 @@ export type OrderWhereUniqueInput = Prisma.AtLeast<{
 export type OrderOrderByWithAggregationInput = {
   ticket?: Prisma.SortOrder
   plate?: Prisma.SortOrder
+  date?: Prisma.SortOrder
   client?: Prisma.SortOrder
   service?: Prisma.SortOrder
   status?: Prisma.SortOrder
@@ -325,6 +336,7 @@ export type OrderScalarWhereWithAggregatesInput = {
   NOT?: Prisma.OrderScalarWhereWithAggregatesInput | Prisma.OrderScalarWhereWithAggregatesInput[]
   ticket?: Prisma.StringWithAggregatesFilter<"Order"> | string
   plate?: Prisma.StringWithAggregatesFilter<"Order"> | string
+  date?: Prisma.StringWithAggregatesFilter<"Order"> | string
   client?: Prisma.StringWithAggregatesFilter<"Order"> | string
   service?: Prisma.StringWithAggregatesFilter<"Order"> | string
   status?: Prisma.StringWithAggregatesFilter<"Order"> | string
@@ -339,6 +351,7 @@ export type OrderScalarWhereWithAggregatesInput = {
 export type OrderCreateInput = {
   ticket: string
   plate: string
+  date?: string
   client: string
   service: string
   status: string
@@ -354,6 +367,7 @@ export type OrderCreateInput = {
 export type OrderUncheckedCreateInput = {
   ticket: string
   plate: string
+  date?: string
   client: string
   service: string
   status: string
@@ -369,6 +383,7 @@ export type OrderUncheckedCreateInput = {
 export type OrderUpdateInput = {
   ticket?: Prisma.StringFieldUpdateOperationsInput | string
   plate?: Prisma.StringFieldUpdateOperationsInput | string
+  date?: Prisma.StringFieldUpdateOperationsInput | string
   client?: Prisma.StringFieldUpdateOperationsInput | string
   service?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
@@ -384,6 +399,7 @@ export type OrderUpdateInput = {
 export type OrderUncheckedUpdateInput = {
   ticket?: Prisma.StringFieldUpdateOperationsInput | string
   plate?: Prisma.StringFieldUpdateOperationsInput | string
+  date?: Prisma.StringFieldUpdateOperationsInput | string
   client?: Prisma.StringFieldUpdateOperationsInput | string
   service?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
@@ -399,6 +415,7 @@ export type OrderUncheckedUpdateInput = {
 export type OrderCreateManyInput = {
   ticket: string
   plate: string
+  date?: string
   client: string
   service: string
   status: string
@@ -413,6 +430,7 @@ export type OrderCreateManyInput = {
 export type OrderUpdateManyMutationInput = {
   ticket?: Prisma.StringFieldUpdateOperationsInput | string
   plate?: Prisma.StringFieldUpdateOperationsInput | string
+  date?: Prisma.StringFieldUpdateOperationsInput | string
   client?: Prisma.StringFieldUpdateOperationsInput | string
   service?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
@@ -427,6 +445,7 @@ export type OrderUpdateManyMutationInput = {
 export type OrderUncheckedUpdateManyInput = {
   ticket?: Prisma.StringFieldUpdateOperationsInput | string
   plate?: Prisma.StringFieldUpdateOperationsInput | string
+  date?: Prisma.StringFieldUpdateOperationsInput | string
   client?: Prisma.StringFieldUpdateOperationsInput | string
   service?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
@@ -441,6 +460,7 @@ export type OrderUncheckedUpdateManyInput = {
 export type OrderCountOrderByAggregateInput = {
   ticket?: Prisma.SortOrder
   plate?: Prisma.SortOrder
+  date?: Prisma.SortOrder
   client?: Prisma.SortOrder
   service?: Prisma.SortOrder
   status?: Prisma.SortOrder
@@ -459,6 +479,7 @@ export type OrderAvgOrderByAggregateInput = {
 export type OrderMaxOrderByAggregateInput = {
   ticket?: Prisma.SortOrder
   plate?: Prisma.SortOrder
+  date?: Prisma.SortOrder
   client?: Prisma.SortOrder
   service?: Prisma.SortOrder
   status?: Prisma.SortOrder
@@ -473,6 +494,7 @@ export type OrderMaxOrderByAggregateInput = {
 export type OrderMinOrderByAggregateInput = {
   ticket?: Prisma.SortOrder
   plate?: Prisma.SortOrder
+  date?: Prisma.SortOrder
   client?: Prisma.SortOrder
   service?: Prisma.SortOrder
   status?: Prisma.SortOrder
@@ -534,6 +556,7 @@ export type OrderUpdateOneRequiredWithoutNotesNestedInput = {
 export type OrderCreateWithoutNotesInput = {
   ticket: string
   plate: string
+  date?: string
   client: string
   service: string
   status: string
@@ -548,6 +571,7 @@ export type OrderCreateWithoutNotesInput = {
 export type OrderUncheckedCreateWithoutNotesInput = {
   ticket: string
   plate: string
+  date?: string
   client: string
   service: string
   status: string
@@ -578,6 +602,7 @@ export type OrderUpdateToOneWithWhereWithoutNotesInput = {
 export type OrderUpdateWithoutNotesInput = {
   ticket?: Prisma.StringFieldUpdateOperationsInput | string
   plate?: Prisma.StringFieldUpdateOperationsInput | string
+  date?: Prisma.StringFieldUpdateOperationsInput | string
   client?: Prisma.StringFieldUpdateOperationsInput | string
   service?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
@@ -592,6 +617,7 @@ export type OrderUpdateWithoutNotesInput = {
 export type OrderUncheckedUpdateWithoutNotesInput = {
   ticket?: Prisma.StringFieldUpdateOperationsInput | string
   plate?: Prisma.StringFieldUpdateOperationsInput | string
+  date?: Prisma.StringFieldUpdateOperationsInput | string
   client?: Prisma.StringFieldUpdateOperationsInput | string
   service?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.StringFieldUpdateOperationsInput | string
@@ -637,6 +663,7 @@ export type OrderCountOutputTypeCountNotesArgs<ExtArgs extends runtime.Types.Ext
 export type OrderSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   ticket?: boolean
   plate?: boolean
+  date?: boolean
   client?: boolean
   service?: boolean
   status?: boolean
@@ -653,6 +680,7 @@ export type OrderSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
 export type OrderSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   ticket?: boolean
   plate?: boolean
+  date?: boolean
   client?: boolean
   service?: boolean
   status?: boolean
@@ -667,6 +695,7 @@ export type OrderSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensi
 export type OrderSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   ticket?: boolean
   plate?: boolean
+  date?: boolean
   client?: boolean
   service?: boolean
   status?: boolean
@@ -681,6 +710,7 @@ export type OrderSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensi
 export type OrderSelectScalar = {
   ticket?: boolean
   plate?: boolean
+  date?: boolean
   client?: boolean
   service?: boolean
   status?: boolean
@@ -692,7 +722,7 @@ export type OrderSelectScalar = {
   hasChecklist?: boolean
 }
 
-export type OrderOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"ticket" | "plate" | "client" | "service" | "status" | "provider" | "createdAt" | "updatedAt" | "eta" | "agentName" | "hasChecklist", ExtArgs["result"]["order"]>
+export type OrderOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"ticket" | "plate" | "date" | "client" | "service" | "status" | "provider" | "createdAt" | "updatedAt" | "eta" | "agentName" | "hasChecklist", ExtArgs["result"]["order"]>
 export type OrderInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   notes?: boolean | Prisma.Order$notesArgs<ExtArgs>
   _count?: boolean | Prisma.OrderCountOutputTypeDefaultArgs<ExtArgs>
@@ -708,6 +738,7 @@ export type $OrderPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     ticket: string
     plate: string
+    date: string
     client: string
     service: string
     status: string
@@ -1143,6 +1174,7 @@ export interface Prisma__OrderClient<T, Null = never, ExtArgs extends runtime.Ty
 export interface OrderFieldRefs {
   readonly ticket: Prisma.FieldRef<"Order", 'String'>
   readonly plate: Prisma.FieldRef<"Order", 'String'>
+  readonly date: Prisma.FieldRef<"Order", 'String'>
   readonly client: Prisma.FieldRef<"Order", 'String'>
   readonly service: Prisma.FieldRef<"Order", 'String'>
   readonly status: Prisma.FieldRef<"Order", 'String'>

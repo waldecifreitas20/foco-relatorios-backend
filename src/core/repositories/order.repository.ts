@@ -14,6 +14,7 @@ export class OrderRepository {
           service: order.service,
           status: order.status,
           ticket: order.ticket,
+          date: order.date,
           provider: order.provider,
           agentName: order.agentName ?? "",
         },

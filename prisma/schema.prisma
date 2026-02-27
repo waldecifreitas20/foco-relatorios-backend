@@ -10,6 +10,7 @@ datasource db {
 model Order {
   ticket       String      @id
   plate        String
+  date         String      @default("")
   client       String
   service      String
   status       String
