@@ -62,8 +62,9 @@ appRouter.get("/all", async (req, res) => {
       limit: Number(req.query.limit ?? 50),
       page: Number(req.query.page ?? 0),
       createdAt: new Date((req.query.createdAt as string) ?? Date.now()),
-      anyDate: !req.query.any,
+      anyDate: Boolean(req.query.anyDate),
     }
+
     const response = await orderService.getAll(filters);
 
     return res.status(response.status).json({ ...response });

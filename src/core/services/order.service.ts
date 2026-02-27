@@ -48,7 +48,7 @@ export class OrderService {
 
 
   async getAll({
-    page, limit, createdAt, anyDate=false,
+    page, limit, createdAt, anyDate = false,
   }: {
     page: number, limit: number, createdAt: Date, anyDate: boolean
   }) {
@@ -56,11 +56,8 @@ export class OrderService {
       const offset = page * limit;
       let orders = await this.ordersRepo.getAll(offset, limit) ?? [];
 
-      console.log(anyDate);
-      
-
-      if (anyDate != true ) {
-        orders = orders.filter(o => { 
+      if (anyDate != true) {
+        orders = orders.filter(o => {
           return isEqualDate(o.createdAt, createdAt);
         });
       }
@@ -68,9 +65,7 @@ export class OrderService {
       return {
         status: 200,
         page,
-        orders: orders.filter(o => {
-          return isEqualDate(o.createdAt, createdAt);
-        }).map(o => {
+        orders: orders.map(o => {
           return {
             ...o,
             notes: o.notes.map(n => n.note),
@@ -87,7 +82,7 @@ export class OrderService {
   async getOrder(ticket: string) {
     try {
       const order = await this.ordersRepo.getByTicket(ticket);
-   
+
       if (!order) {
         return {
           status: 404,
