@@ -9,6 +9,7 @@ export type Order = {
   client: Client;
   service: Service;
   status: ServiceStatus;
+  date: string;
   provider: Provider;
   createdAt?: Date;
   updatedAt?: Date;
