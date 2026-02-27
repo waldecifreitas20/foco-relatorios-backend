@@ -59,7 +59,7 @@ export class OrderRepository {
   }
 
 
-  async update(patch: any) {
+  async update(patch: Partial<Order>) {
     return await this.table.update({
       where: {
         ticket: patch.ticket
@@ -68,6 +68,7 @@ export class OrderRepository {
         plate: patch.plate,
         service: patch.service,
         status: patch.status,
+        date: patch.date,
         eta: patch.eta,
         agentName: patch.agentName,
         hasChecklist: patch.hasChecklist,
