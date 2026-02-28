@@ -49,7 +49,7 @@ export class OrderService {
   async getAll({ page, limit, createdAt }: GetAllOrdersDto) {
     try {
       const offset = page * limit;
-      
+
       let orders;
       if (!createdAt) {
         orders = await this.ordersRepo.getAll(offset, limit) ?? [];
@@ -63,6 +63,7 @@ export class OrderService {
       return {
         status: 200,
         page,
+        results: orders.length,
         orders: orders.map(o => {
           return {
             ...o,
