@@ -2,7 +2,7 @@ import { Order } from "../../types/Order.js";
 import { getErrorResponse } from "../../utils/errors.js";
 import { OrderRepository } from "../repositories/order.repository.js";
 import { NoteRepository } from "../repositories/note.repository.js";
-import { CreateOrderDto } from "../../dtos/order.dto.js";
+import { CreateOrderDto, GetAllOrdersDto } from "../../dtos/order.dto.js";
 
 
 const isEqualDate = (date1: Date, date2: Date) => {
@@ -46,21 +46,19 @@ export class OrderService {
 
   }
 
-
-  async getAll({
-    page, limit, createdAt, anyDate = false,
-  }: {
-    page: number, limit: number, createdAt: Date, anyDate: boolean
-  }) {
+  async getAll({ page, limit, createdAt }: GetAllOrdersDto) {
     try {
       const offset = page * limit;
-      let orders = await this.ordersRepo.getAll(offset, limit) ?? [];
-
-      if (anyDate != true) {
-        orders = orders.filter(o => {
-          return isEqualDate(o.createdAt, createdAt);
-        });
+      
+      let orders;
+      if (!createdAt) {
+        orders = await this.ordersRepo.getAll(offset, limit) ?? [];
+      } else {
+        orders = await this.ordersRepo.getAllByDate(offset, limit, createdAt) ?? [];
       }
+
+
+
 
       return {
         status: 200,

@@ -16,3 +16,9 @@ export interface CreateOrderDto {
   agentName?: string;
   hasChecklist?: boolean;
 };
+
+export interface GetAllOrdersDto {
+  page: number,
+  limit: number,
+  createdAt: string,
+}; 

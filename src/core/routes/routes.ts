@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { OrderService } from "../services/order.service.js";
+import { GetAllOrdersDto } from "../../dtos/order.dto.js";
 
 
 const appRouter = Router();
@@ -59,11 +60,10 @@ appRouter.get("/order/:ticket", async (req, res) => {
 appRouter.get("/all", async (req, res) => {
   try {
     const filters = {
-      limit: Number(req.query.limit ?? 50),
+      limit: Number(req.query.limit ?? 100),
       page: Number(req.query.page ?? 0),
-      createdAt: new Date((req.query.createdAt as string) ?? Date.now()),
-      anyDate: Boolean(req.query.anyDate),
-    }
+      createdAt: req.query.createdAt,
+    } as GetAllOrdersDto;
 
     const response = await orderService.getAll(filters);
 
